@@ -75,11 +75,11 @@ h4.title span {
 .icon-header svg {
   cursor: pointer;
   height: 22px;
-  fill: #3282b8;
+  fill: #0f4c75;
   background-color: #ffffff;
   border-radius: 50%;
   padding: 5px;
-  border: 1px solid #3282b8;  
+  border: 1px solid #0f4c75;  
 }
 .icon-header .active svg, .icon-header svg:hover {
   fill: #ffffff;
@@ -92,10 +92,13 @@ h4.title span {
   border: 1px solid #3282b8;
   border-radius: 8px 8px 0 0;
   box-shadow: 0px 3px 8px #999999;
-  min-height: 128px;
+  background-color: #3282b8;
 }
-.parametros.avanzados {
-  padding-bottom: 8px;
+.parametros {
+  background-color: #ffffff;
+}
+.parametros-header {
+  margin-top: 23px;
 }
 .cell-header {
   position: absolute;
@@ -170,8 +173,7 @@ h4.title span {
   text-align: center;
 }
 .parametros .valores {
-  margin: 32px 0 0;
-  padding-left: 34%;
+  padding: 36px 0 0 34%;
 }
 .parametros .valores.valores__1-3 {
   margin: 0;
@@ -190,13 +192,13 @@ h4.title span {
   display: block;
 }
 .parametros .valores input {
-  width: calc(100% - 40px);
+  width: calc(100% - 45px);
 }
 .parametros .valores input {
   text-align: right;
 }
 .valores.valores-adicionales {
-  margin: 8px 0;
+  padding: 8px 0 0 34%;
   width: calc(100% - 34%);
 }
 .mostrar__valores-adicionales {
@@ -219,6 +221,20 @@ h4.title span {
 }
 
 .hidden { display: none !important; }
+.center { text-align: center; }
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  align-items: center;
+}
+.flex-item {
+  order: 0;
+  flex: 1;
+  align-self: auto;
+}
 
 /* Iconos Ver/Ocultar */
 .borderLeftAvanzado {
@@ -242,6 +258,7 @@ h4.title span {
 /* Clases especificas para móviles */
 .cell-parametro {
   width: 100%;
+  padding-bottom: 23px;
 }
 /* Clases especificas para resoluciones superiores a 768 e inferiores a 1439 */
 @media (min-width: 768px) and (max-width: 1439px) {
