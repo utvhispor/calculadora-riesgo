@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <title>Calc. Riesgos Aerosoles</title>
+  <link rel="shortcut icon" type="image/ico" href="img/favicon.ico"/>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+  <h4 class="title">
+    <img src="img/UTV_Logo.png" />
+    <span>Calc. Riesgos Aerosoles</span>
+  </h4>
+  <div class="container">
+    <p class="descripcion">Selecciona el lugar/estancia sobre la que quiere calcular la transmisión de riesgos por aerosoles de la <b>COVID-19</b> </p>
+    <div class="subdivision">
+      <span>Lugar / Estancia</span>
+    </div>
+    <div class="icon-header">
+      <ul>
+        <li class="active"> <span class="li-icon"></span> <span class="li-text">Clase</span> </li>
+        <li> <span class="li-icon"></span> <span class="li-text">Coro</span> </li>
+        <li> <span class="li-icon"></span> <span class="li-text">Estadio</span> </li>
+        <li> <span class="li-icon"></span> <span class="li-text">Metro</span> </li>
+        <li> <span class="li-icon"></span> <span class="li-text">Super</span> </li>
+      </ul>
+    </div>
+    <div class="cell-parametro">
+      <div class="parametros avanzados">
+        <div class="calculo">
+          <p>Tasa de ventilación por persona</p>
+          <span class="valor" id="valorTasaVentilacion">00,0</span>
+          <span class="parametro">L/s/persona</span>
+        </div>
+        <div class="cell-header">
+          <p class="par-title">Parametros ambientales</p>
+          <span class="informacion">i</span>
+        </div>
+        <div class="valores">
+          <div> 
+            <label>Largo</label>
+            <input type="number" id="valorLargo" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="1" max="9999" step="0.1" value="7.6" onchange="calculoTasaVentilacion()" />
+            <sub>m.</sub>
+          </div>
+          <div>
+            <label>Ancho</label>
+            <input type="number" id="valorAncho" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="1" max="9999" step="0.1" value="6.1" onchange="calculoTasaVentilacion()" />
+            <sub>m.</sub>
+          </div>
+          <div>
+            <label>Alto</label>
+            <input type="number" id="valorAlto" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="1" max="9999" step="0.1" value="3.1" onchange="calculoTasaVentilacion()" />
+            <sub>m.</sub>
+          </div>
+          <div>
+            <label>Duracion evento</label>
+            <input type="number" id="valorDuracionEvento" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="1" max="9999" step="1" value="50" onchange="calculoTasaVentilacion()" />
+            <sub>min.</sub>
+          </div>
+          <div>
+            <label>Nº rep. evento</label>
+            <input type="number" id="valorRepEvento" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="1" max="9999" step="1" value="180" onchange="calculoTasaVentilacion()" />
+            <sub></sub>
+          </div>
+          <div>
+            <label>Cambios de aire</label>
+            <input type="number" id="valorCambiosAire" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="1" max="9999" step="1" value="3" onchange="calculoTasaVentilacion()" />
+            <sub>h.</sub>
+          </div>
+        </div>
+        <div class="cell-footer mostrar" id="footerParametrosAvanzados">
+          <!-- span class="arrow arrow-down" id="verParametrosAvanzados"></span -->
+          <div class="icoVer">
+            <svg id="mostrarPersonaActividad" xmlns="http://www.w3.org/2000/svg" fill="#0f4c75">
+              <path d="M.2 10a11 11 0 0 1 19.6 0A11 11 0 0 1 .2 10zm9.8 4a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0-2a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
+            </svg>
+            <span>mostrar</span>
+          </div>
+          <div class="icoOcultar">
+            <svg xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" aria-hidden="true" viewBox="0 0 14 14" fill="#999999">
+              <path d="m 11.050789,4.6807995 c 0.812763,0.612897 1.482232,1.405696 1.949211,2.3192 -1.114655,2.180489 -3.3830004,3.6732525 -6,3.6732525 -0.5944749,0 -1.1709588,-0.07703 -1.7200155,-0.221649 L 6.365699,9.3658875 c 0.2023064,0.0541 0.4149352,0.08295 0.634301,0.08295 1.3524539,0 2.4488345,-1.0963809 2.4488345,-2.448835 0,-0.219365 -0.028841,-0.431994 -0.082946,-0.634301 L 11.050789,4.6807995 Z M 8.7200154,3.5483969 C 8.1709586,3.4037765 7.5944748,3.3267482 7,3.3267482 c -2.6169992,0 -4.885345,1.4927633 -5.9999999,3.6732513 0.4669791,0.913505 1.1364481,1.706304 1.9492117,2.319201 l 1.6848998,-1.6849 c -0.054102,-0.202306 -0.082946,-0.414935 -0.082946,-0.634301 0,-1.352454 1.0963805,-2.448834 2.4488344,-2.448834 0.219366,0 0.4319946,0.02884 0.6343008,0.08295 L 8.7200154,3.5483969 Z M 10.896072,2.2381344 11.761866,3.1039281 3.1039283,11.761866 2.2381346,10.896072 10.896072,2.2381344 Z"/>
+            </svg>
+            <span>ocultar</span>
+          </div>
+          <p class="par-title">Parametros avanzados</p>
+        </div>
+        <div class="valores valores-adicionales acordeon" id="parametrosAvanzados">
+          <div> 
+            <label>Presión</label>
+            <input type="number" id="valorPresion" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="0" max="9999" step="0.1" value="0.95" onchange="calculoTasaVentilacion()" />
+            <sub>atm</sub>
+          </div>
+          <div> 
+            <label>Temperatura</label>
+            <input type="number" id="valorTemperatura" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="1" max="9999" step="0.1" value="20" onchange="calculoTasaVentilacion()" />
+            <sub>C</sub>
+          </div>
+          <div> 
+            <label>Humedad</label>
+            <input type="number" id="valorHumedad" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="1" max="9999" step="1" value="50" onchange="calculoTasaVentilacion()" />
+            <sub>%</sub>
+          </div>
+          <div> 
+            <label>CO2 al aire libre</label>
+            <input type="number" id="valorCO2AireLibre" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="1" max="9999" step="1" value="415" onchange="calculoTasaVentilacion()" />
+            <sub>ppm</sub>
+          </div>
+          <div> 
+            <label>Tasa descomposicón</label>
+            <input type="number" id="valorTasaDescomposicion" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="0" max="9999" step="0.1" value="0.62" onchange="calculoTasaVentilacion()" />
+            <sub>h-1</sub>
+          </div>
+          <div> 
+            <label>Deposicón superficies</label>
+            <input type="number" id="valorDeposicionSuperficie" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="0" max="9999" step="0.1" value="0.3" onchange="calculoTasaVentilacion()" />
+            <sub>h-1</sub>
+          </div>
+          <div> 
+            <label>Medidas control adicionales</label>
+            <input type="number" id="valorMedidasAdicionales" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="0" max="9999" step="0.1" value="0" onchange="calculoTasaVentilacion()" />
+            <sub>h-1</sub>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cell-parametro">
+      <div class="calculos">
+        <div class="calculo__1-3">
+          <p>Densidad <br /> (área/persona)</p>
+          <span class="valor" id="valorAreaPersona">00,0</span>
+          <span class="parametro">sq ft/persona</span>
+        </div>
+        <div class="calculo__1-3">
+          <p>Densidad <br /> (persona/área)</p>
+          <span class="valor" id="valorPersonaArea">00,0</span>
+          <span class="parametro">personsa/m2</span>
+        </div>
+        <div class="calculo__1-3">
+          <p>Densidad <br /> (volumen/persona)</p>
+          <span class="valor" id="valorVolumenPersona">00,0</span>
+          <span class="parametro">m3/persona</span>
+        </div>
+      </div>
+      <div class="cell-header">
+        <p class="par-title">Parametros Personas & Actividad</p>
+        <span class="informacion">i</span>
+      </div>
+      <div class="parametros avanzados">
+        <div class="valores valores__1-3">
+          <div>
+            <label>Nº Personas</label>
+            <input type="number" id="valorNPersonas" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="1" max="9999" step="1" value="10" onchange="calculoTasaVentilacion()" />
+            <sub></sub>
+          </div>
+          <div>
+            <label>Población inmune</label>
+            <input type="number" id="valorInmune" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="1" max="9999" step="1" value="0" onchange="" />
+            <sub>%</sub>
+          </div>
+          <div>
+            <label>Frec. respiratoria</label>
+            <input type="number" id="valorRespiracion" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="1" max="9999" step="0.1" value="0.52" onchange="" />
+            <sub>m3/h</sub>
+          </div>
+          <div>
+            <label>Exhalación cuántica</label>
+            <input type="number" id="valorExhalacion" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="1" max="9999" step="1" value="25" onchange="" />
+            <sub>h-1</sub>
+          </div>
+          <div>
+            <label>Ef. mascarilla exhalación</label>
+            <input type="number" id="valorMascExhalacion" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="0" max="9999" step="1" value="50" onchange="" />
+            <sub>%</sub>
+          </div>
+          <div>
+            <label>Personas con mascarillas</label>
+            <input type="number" id="valorPersonasMasc" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="0" max="9999" step="1" value="100" onchange="" />
+            <sub>%</sub>
+          </div>
+          <div>
+            <label>Ef. mascarilla inhalación</label>
+            <input type="number" id="valorMascInhalacion" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="0" max="9999" step="1" value="30" onchange="" />
+            <sub>%</sub>
+          </div>
+          <div class="campoAvanzado hidden" id="divPersonasInfecciosa">
+            <label>Pers. infecciosas</label>
+            <input type="number" id="valorPersonasInfecciosas" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="0" max="9999" step="1" value="1" onchange="" />
+            <sub>%</sub>
+          </div>
+          <div class="campoAvanzado hidden" id="divCO2Persona">
+            <label>Tasa CO2 por persona</label>
+            <input type="number" id="valorCO2Persona" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="0" max="9999" step="0.001" value="0.005" onchange="" />
+            <sub>%</sub>
+          </div>
+        </div>
+        <div class="cell-footer mostrar" id="avanzadosPersonasActividad">
+          <div class="icoVer">
+            <svg id="mostrarPersonaActividad" xmlns="http://www.w3.org/2000/svg" fill="#0f4c75">
+              <path d="M.2 10a11 11 0 0 1 19.6 0A11 11 0 0 1 .2 10zm9.8 4a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0-2a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
+            </svg>
+            <span>mostrar</span>
+          </div>
+          <div class="icoOcultar">
+            <svg xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" aria-hidden="true" viewBox="0 0 14 14" fill="#999999">
+              <path d="m 11.050789,4.6807995 c 0.812763,0.612897 1.482232,1.405696 1.949211,2.3192 -1.114655,2.180489 -3.3830004,3.6732525 -6,3.6732525 -0.5944749,0 -1.1709588,-0.07703 -1.7200155,-0.221649 L 6.365699,9.3658875 c 0.2023064,0.0541 0.4149352,0.08295 0.634301,0.08295 1.3524539,0 2.4488345,-1.0963809 2.4488345,-2.448835 0,-0.219365 -0.028841,-0.431994 -0.082946,-0.634301 L 11.050789,4.6807995 Z M 8.7200154,3.5483969 C 8.1709586,3.4037765 7.5944748,3.3267482 7,3.3267482 c -2.6169992,0 -4.885345,1.4927633 -5.9999999,3.6732513 0.4669791,0.913505 1.1364481,1.706304 1.9492117,2.319201 l 1.6848998,-1.6849 c -0.054102,-0.202306 -0.082946,-0.414935 -0.082946,-0.634301 0,-1.352454 1.0963805,-2.448834 2.4488344,-2.448834 0.219366,0 0.4319946,0.02884 0.6343008,0.08295 L 8.7200154,3.5483969 Z M 10.896072,2.2381344 11.761866,3.1039281 3.1039283,11.761866 2.2381346,10.896072 10.896072,2.2381344 Z"/>
+            </svg>
+            <span>ocultar</span>
+          </div>
+          <p class="par-title">Parametros avanzados</p>
+        </div>
+        <div class="borderLeftAvanzado"></div>
+      </div>
+
+    </div>
+    <div class="cell-parametro">
+      <div class="borderLeftHeader"></div>
+      <div class="cell-header">
+        <p class="par-title">Parametros COVID-19</p>
+        <span class="informacion">i</span>
+      </div>
+      <div class="parametros">
+        <div class="valores valores__1-3">
+          <div> 
+            <label>Probabilidad de ser infeccioso</label>
+            <input type="number" id="valorInfeccioso" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="0" max="9999" step="0.1" value="0.20" onchange="calculoTasaVentilacion()" />
+            <sub>%</sub>
+          </div>
+          <div class="campoAvanzado hidden" id="divHospitalizacion">
+            <label>Tasa de hospitalización</label>
+            <input type="number" id="valorHospitalizacion" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="0" max="9999" step="0.1" value="20" onchange="calculoTasaVentilacion()" />
+            <sub>%.</sub>
+          </div>
+          <div class="campoAvanzado hidden" id="divMortalidad">
+            <label>Índice de mortalidad</label>
+            <input type="number" id="valorMortalidad" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="0" max="9999" step="0.1" value="1" onchange="calculoTasaVentilacion()" />
+            <sub>%</sub>
+          </div>
+        </div>
+      </div>
+      <div class="cell-footer mostrar" id="avanzadosCOVID19">
+        <div class="icoVer">
+          <svg id="mostrarPersonaActividad" xmlns="http://www.w3.org/2000/svg" fill="#0f4c75">
+            <path d="M.2 10a11 11 0 0 1 19.6 0A11 11 0 0 1 .2 10zm9.8 4a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0-2a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
+          </svg>
+          <span>mostrar</span>
+        </div>
+        <div class="icoOcultar">
+          <svg xmlns="http://www.w3.org/2000/svg" role="img" focusable="false" aria-hidden="true" viewBox="0 0 14 14" fill="#999999">
+            <path d="m 11.050789,4.6807995 c 0.812763,0.612897 1.482232,1.405696 1.949211,2.3192 -1.114655,2.180489 -3.3830004,3.6732525 -6,3.6732525 -0.5944749,0 -1.1709588,-0.07703 -1.7200155,-0.221649 L 6.365699,9.3658875 c 0.2023064,0.0541 0.4149352,0.08295 0.634301,0.08295 1.3524539,0 2.4488345,-1.0963809 2.4488345,-2.448835 0,-0.219365 -0.028841,-0.431994 -0.082946,-0.634301 L 11.050789,4.6807995 Z M 8.7200154,3.5483969 C 8.1709586,3.4037765 7.5944748,3.3267482 7,3.3267482 c -2.6169992,0 -4.885345,1.4927633 -5.9999999,3.6732513 0.4669791,0.913505 1.1364481,1.706304 1.9492117,2.319201 l 1.6848998,-1.6849 c -0.054102,-0.202306 -0.082946,-0.414935 -0.082946,-0.634301 0,-1.352454 1.0963805,-2.448834 2.4488344,-2.448834 0.219366,0 0.4319946,0.02884 0.6343008,0.08295 L 8.7200154,3.5483969 Z M 10.896072,2.2381344 11.761866,3.1039281 3.1039283,11.761866 2.2381346,10.896072 10.896072,2.2381344 Z"/>
+          </svg>
+          <span>ocultar</span>
+        </div>
+        <p class="par-title">Parametros avanzados</p>
+      </div>
+      <div class="borderLeftAvanzado"></div>
+    </div>
+  </div> <!-- .container -->
+  <!-- Funciones propias -->
+  <script src="js/functions.js"></script>
+</body>
+</html>
