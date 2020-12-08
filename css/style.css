@@ -63,24 +63,28 @@ h4.title span {
   display: block;
   text-align: center;
 }
-.icon-header ul li span.li-icon {
-  border: 1px solid #3282b8;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  margin: 0 auto;
-}
 .icon-header ul li span.li-text {
   font-size: 10px;
   color: #999999;
   text-transform: uppercase;
 }
-.icon-header ul li.active span.li-icon {
-  background-color: #3282b8;
-}
 .icon-header ul li.active span.li-text {
-  color: #3282b8;
+  color: #0f4c75;
   font-weight: bold;
+}
+.icon-header svg {
+  cursor: pointer;
+  height: 22px;
+  fill: #3282b8;
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 5px;
+  border: 1px solid #3282b8;  
+}
+.icon-header .active svg, .icon-header svg:hover {
+  fill: #ffffff;
+  background-color: #0f4c75;
+  border: 1px solid #0f4c75;
 }
 .cell-parametro {
   position: relative;
