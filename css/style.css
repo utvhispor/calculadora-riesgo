@@ -100,6 +100,11 @@ h4.title span {
 .parametros-header {
   margin-top: 23px;
 }
+.parametros-header__title {
+  color: #0f4c75;
+  margin: 0;
+  padding: 8px 16px;
+}
 .cell-header {
   position: absolute;
   top: 0px;
@@ -218,6 +223,20 @@ h4.title span {
   background-color: #3282b8;
   width: 100%;
   height: 32px;  
+}
+
+.prametros-flex { 
+  background-color: #0f4c75;
+  color: #ffffff;
+  padding: 8px 0 0;
+}
+.parametro-item.flex-item {
+  align-self: flex-end;
+}
+.parametro-item p{
+  font-size: 20px;
+  font-weight: bold;
+  margin: 8px 0;
 }
 
 .hidden { display: none !important; }
