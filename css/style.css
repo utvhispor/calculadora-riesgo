@@ -294,10 +294,12 @@ h4.title span {
 @media (min-width: 1440px) {
   .cell-parametro {
     margin: 16px;
-    width: calc(24% - 16px);
-    float: left;
+    width: calc(32% - 16px);
+    /* float: left; */
+    display: inline-block;
+    vertical-align: text-top;
   }
-  .cell-parametro:nth-child(4n) {
+  .cell-parametro:nth-child(3n) {
     clear: both;
   }
 }

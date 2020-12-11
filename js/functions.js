@@ -1,3 +1,9 @@
+const icoClase = document.getElementById('icoClase')
+const icoCoro = document.getElementById('icoCoro')
+const icoEstadio = document.getElementById('icoEstadio')
+const icoMetro = document.getElementById('icoMetro')
+const icoSuper= document.getElementById('icoSuper')
+
 const verParametrosAvanzados = document.getElementById('verParametrosAvanzados')
 const parametrosAvanzados = document.getElementById('parametrosAvanzados')
 const footerParametrosAvanzados = document.getElementById('footerParametrosAvanzados')
@@ -76,6 +82,22 @@ avanzadosCOVID19.addEventListener('click', (event) => {
   avanzadosCOVID19.classList.toggle('mostrar')
   divHospitalizacion.classList.toggle('hidden')
   divMortalidad.classList.toggle('hidden')
+})
+
+icoClase.addEventListener('click', (event) => {
+  valorLargo.value = 9.2
+})
+icoCoro.addEventListener('click', (event) => {
+  valorLargo.value = 9.2
+})
+icoEstadio.addEventListener('click', (event) => {
+  valorLargo.value = 9.2
+})
+icoMetro.addEventListener('click', (event) => {
+  valorLargo.value = 9.2
+})
+icoSuper.addEventListener('click', (event) => {
+  valorLargo.value = 9.2
 })
 
 document.addEventListener('DOMContentLoaded', calculoTasaVentilacion())
