@@ -255,6 +255,11 @@ h4.title span {
   align-self: auto;
 }
 
+.txt_note {
+  width: 100%;
+  text-align: justify;
+}
+
 /* Iconos Ver/Ocultar */
 .borderLeftAvanzado {
   background-color: #3282b8;

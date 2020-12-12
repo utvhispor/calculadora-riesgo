@@ -91,6 +91,14 @@ icoClase.addEventListener('click', (event) => {
     iconos[i].classList.remove("active");
   }
   document.getElementById("icoClase").classList.add("active")
+  var str = "<strong>Frecuencia respiratoria</strong><br /><br />"
+  str += "Usando la mitad de la actividad sedentaria y ligera, 16-21 años por defecto. La frequencia respiratoria solo importa para personas susceptibles. Para estudiar la transmisión de los estudiantes al maestro, es necesario aumentar este valor en consecuencia.<br />"
+  str += "Para estudiar la transmisión a niños pequeños, la frequencia respiratoria también debe ajustarse de acuerdo con la tabla Readme.<br /><br />"
+  str += "<strong>Tasa de emisión Quanta</strong><br /><br />"
+  str += "El valor actual es para una profesora hablando mucho.<br />"
+  str += "Para los adolescentes, se usan los valores del archivo Readme, según la actividad.<br />"
+  str += "Se cree que los niños pequeños son menos contagiosos y también respiran menos aire, por lo que quizás reduzca la Tasa de emisión Quanta en x5."
+  document.getElementById("notas").innerHTML = str
 
   // parametros ambientales
   valorLargo.value = 15.3
@@ -134,6 +142,9 @@ icoCoro.addEventListener('click', (event) => {
     iconos[i].classList.remove("active");
   }
   document.getElementById("icoCoro").classList.add("active")
+  var str = "La probabilidad de muerte se establece más alta debido a la mayor edad de los miembros del coro (el 75% de los enfermos tenían >= 65 años). Sugerir cambiar al 1% para aplicaciones generales.<br /><br />"
+  str += "Probabilidad de ser infeccioso calculada a partir de la prevalencia de la enfermedad en el condado en ese momento (7 casos * 2 para dar cuenta de los casos no detectados / 129000 habitantes del condado), ver Miller et al. 2020.<br /><br />"
+  document.getElementById("notas").innerHTML = str
 
   // parametros ambientales
   valorLargo.value = 9.2
@@ -176,6 +187,10 @@ icoEstadio.addEventListener('click', (event) => {
     iconos[i].classList.remove("active");
   }
   document.getElementById("icoEstadio").classList.add("active")
+  var str = "Este es un caso para un estadio de fútbol, como se explica en este tweet: <a href='https://twitter.com/jljcolorado/status/1289254898131820550'>https://twitter.com/jljcolorado/status/1289254898131820550</a><br /><br />"
+  str += "E basado en este articulo: <a href='https://www.sciencedirect.com/science/article/pii/S1352231013004494'>https://www.sciencedirect.com/science/article/pii/S1352231013004494</a><br /><br />"
+  str += "Tener en cuenta que para el riesgo de infección, la calculadora solo estima el riesgo de infección a través del aire más allá de las proximidades. Dado que la distancia social no se mantendría en tal evento, esto será una gran subestimación."
+  document.getElementById("notas").innerHTML = str
 
   // parametros ambientales
   valorLargo.value = 183
@@ -218,6 +233,8 @@ icoMetro.addEventListener('click', (event) => {
     iconos[i].classList.remove("active");
   }
   document.getElementById("icoMetro").classList.add("active")
+  var str = ""
+  document.getElementById("notas").innerHTML = str
 
   // parametros ambientales
   valorLargo.value = 13.4
@@ -260,6 +277,13 @@ icoSuper.addEventListener('click', (event) => {
     iconos[i].classList.remove("active");
   }
   document.getElementById("icoSuper").classList.add("active")
+  var str = "Basado en un supermercado específico en Boulder, Colorado.<br /><br />"
+  str +="Dimensiones horizontales estimadas de Google Maps (usando escala), altura usando imágenes de Google Street View (usando personas presentes para escala).<br /><br />"
+  str +="Tasa de ventilación estimada a partir del estándar ASHRAE en la página Readme.<br /><br />"
+  str +="Promedio diario típico de ocupación, basado en mis visitas al espacio antes de la pandemia (puede ser menor ahora).<br /><br />"
+  str +="Otros parámetros estimados en el Readme para esta situación.<br /><br />"
+  str +="Esto es para un trabajador de un supermercado. Para un cliente, se cambia el tiempo dedicado a la historia a, por ejemplo, 1 hora, 4 veces a la semana para simular 1 mes."
+  document.getElementById("notas").innerHTML = str
 
   // parametros ambientales
   valorLargo.value = 24.4
