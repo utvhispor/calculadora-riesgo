@@ -85,19 +85,215 @@ avanzadosCOVID19.addEventListener('click', (event) => {
 })
 
 icoClase.addEventListener('click', (event) => {
-  valorLargo.value = 9.2
+  var iconos = document.getElementsByClassName("ico-clase")
+  var i;
+  for (i = 0; i < iconos.length; i++) {
+    iconos[i].classList.remove("active");
+  }
+  document.getElementById("icoClase").classList.add("active")
+
+  // parametros ambientales
+  valorLargo.value = 15.3
+  valorAncho.value = 6.1
+  valorAlto.value = 3.1
+  valorDuracionEvento.value = 50
+  valorRepEvento.value = 180
+  valorCambiosAire.value = 3
+  valorPresion.value = 0.95
+  valorTemperatura.value = 20
+  valorHumedad.value = 50
+  valorCO2AireLibre.value = 415
+  valorTasaDescomposicion.value = 0.62
+  valorDeposicionSuperficie.value = 0.3
+  valorMedidasAdicionales.value = 0
+  // parametros ambientales
+
+  // parametros personas & actividad
+  valorNPersonas.value = 10
+  valorInmune.value = 0
+  valorRespiracion.value = 0.52
+  valorExhalacion.value = 25
+  valorMascExhalacion.value = 50
+  valorPersonasMasc.value = 100
+  valorMascInhalacion.value = 30
+  valorPersonasInfecciosas.value = 1
+  valorCO2Persona.value = 0.005
+  // parametros personas & actividad
+
+  // parametros covid-19
+  valorInfeccioso.value = 0.2
+  valorHospitalizacion.value = 20
+  valorMortalidad.value = 1
+  // parametros covid-19
+
 })
 icoCoro.addEventListener('click', (event) => {
+  var iconos = document.getElementsByClassName("ico-clase")
+  var i;
+  for (i = 0; i < iconos.length; i++) {
+    iconos[i].classList.remove("active");
+  }
+  document.getElementById("icoCoro").classList.add("active")
+
+  // parametros ambientales
   valorLargo.value = 9.2
+  valorAncho.value = 18.3
+  valorAlto.value = 4.8
+  valorDuracionEvento.value = 150
+  valorRepEvento.value = 1
+  valorCambiosAire.value = 0.7
+  valorPresion.value = 0.95
+  valorTemperatura.value = 20
+  valorHumedad.value = 50
+  valorCO2AireLibre.value = 415
+  valorTasaDescomposicion.value = 0.62
+  valorDeposicionSuperficie.value = 0.3
+  valorMedidasAdicionales.value = 0
+  // parametros ambientales
+
+  // parametros personas & actividad
+  valorNPersonas.value = 61
+  valorInmune.value = 0
+  valorRespiracion.value = 1.56
+  valorExhalacion.value = 970
+  valorMascExhalacion.value = 0
+  valorPersonasMasc.value = 0
+  valorMascInhalacion.value = 0
+  valorPersonasInfecciosas.value = 1
+  valorCO2Persona.value = 0.0091
+  // parametros personas & actividad
+
+  // parametros covid-19
+  valorInfeccioso.value = 0.011
+  valorHospitalizacion.value = 20
+  valorMortalidad.value = 4
+  // parametros covid-19
 })
 icoEstadio.addEventListener('click', (event) => {
-  valorLargo.value = 9.2
+  var iconos = document.getElementsByClassName("ico-clase")
+  var i;
+  for (i = 0; i < iconos.length; i++) {
+    iconos[i].classList.remove("active");
+  }
+  document.getElementById("icoEstadio").classList.add("active")
+
+  // parametros ambientales
+  valorLargo.value = 183
+  valorAncho.value = 91.5
+  valorAlto.value = 15.3
+  valorDuracionEvento.value = 90
+  valorRepEvento.value = 1
+  valorCambiosAire.value = 40
+  valorPresion.value = 0.95
+  valorTemperatura.value = 20
+  valorHumedad.value = 50
+  valorCO2AireLibre.value = 415
+  valorTasaDescomposicion.value = 0.62
+  valorDeposicionSuperficie.value = 0.3
+  valorMedidasAdicionales.value = 0
+  // parametros ambientales
+
+  // parametros personas & actividad
+  valorNPersonas.value = 31000
+  valorInmune.value = 0
+  valorRespiracion.value = 0.72
+  valorExhalacion.value = 50
+  valorMascExhalacion.value = 0
+  valorPersonasMasc.value = 0
+  valorMascInhalacion.value = 0
+  valorPersonasInfecciosas.value = 1
+  valorCO2Persona.value = 0.0061
+  // parametros personas & actividad
+
+  // parametros covid-19
+  valorInfeccioso.value = 0.1
+  valorHospitalizacion.value = 20
+  valorMortalidad.value = 1
+  // parametros covid-19
 })
 icoMetro.addEventListener('click', (event) => {
-  valorLargo.value = 9.2
+  var iconos = document.getElementsByClassName("ico-clase")
+  var i;
+  for (i = 0; i < iconos.length; i++) {
+    iconos[i].classList.remove("active");
+  }
+  document.getElementById("icoMetro").classList.add("active")
+
+  // parametros ambientales
+  valorLargo.value = 13.4
+  valorAncho.value = 3.1
+  valorAlto.value = 3.7
+  valorDuracionEvento.value = 20
+  valorRepEvento.value = 60
+  valorCambiosAire.value = 5.7
+  valorPresion.value = 0.95
+  valorTemperatura.value = 20
+  valorHumedad.value = 50
+  valorCO2AireLibre.value = 415
+  valorTasaDescomposicion.value = 0.62
+  valorDeposicionSuperficie.value = 0.3
+  valorMedidasAdicionales.value = 3.6
+  // parametros ambientales
+
+  // parametros personas & actividad
+  valorNPersonas.value = 35
+  valorInmune.value = 15
+  valorRespiracion.value = 0.42
+  valorExhalacion.value = 25
+  valorMascExhalacion.value = 50
+  valorPersonasMasc.value = 100
+  valorMascInhalacion.value = 30
+  valorPersonasInfecciosas.value = 1
+  valorCO2Persona.value = 0.007
+  // parametros personas & actividad
+
+  // parametros covid-19
+  valorInfeccioso.value = 0.10
+  valorHospitalizacion.value = 20
+  valorMortalidad.value = 1
+  // parametros covid-19
 })
 icoSuper.addEventListener('click', (event) => {
-  valorLargo.value = 9.2
+  var iconos = document.getElementsByClassName("ico-clase")
+  var i;
+  for (i = 0; i < iconos.length; i++) {
+    iconos[i].classList.remove("active");
+  }
+  document.getElementById("icoSuper").classList.add("active")
+
+  // parametros ambientales
+  valorLargo.value = 24.4
+  valorAncho.value = 15.3
+  valorAlto.value = 5.5
+  valorDuracionEvento.value = 480
+  valorRepEvento.value = 21
+  valorCambiosAire.value = 3
+  valorPresion.value = 0.95
+  valorTemperatura.value = 20
+  valorHumedad.value = 50
+  valorCO2AireLibre.value = 415
+  valorTasaDescomposicion.value = 0.62
+  valorDeposicionSuperficie.value = 0.3
+  valorMedidasAdicionales.value = 0
+  // parametros ambientales
+
+  // parametros personas & actividad
+  valorNPersonas.value = 75
+  valorInmune.value = 6
+  valorRespiracion.value = 0.72
+  valorExhalacion.value = 10
+  valorMascExhalacion.value = 50
+  valorPersonasMasc.value = 100
+  valorMascInhalacion.value = 30
+  valorPersonasInfecciosas.value = 1
+  valorCO2Persona.value = 0.00675
+  // parametros personas & actividad
+
+  // parametros covid-19
+  valorInfeccioso.value = 0.10
+  valorHospitalizacion.value = 20
+  valorMortalidad.value = 1
+  // parametros covid-19
 })
 
 document.addEventListener('DOMContentLoaded', calculoTasaVentilacion())
