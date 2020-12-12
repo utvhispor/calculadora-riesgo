@@ -65,10 +65,10 @@
         </div>
         <div class="cell-header">
           <p class="par-title">Parametros ambientales</p>
-          <span class="informacion">i</span>
+          <span id="infoAmbientales" class="informacion">i</span>
         </div>
         <div class="valores">
-          <div> 
+          <div>
             <label>Largo</label>
             <input type="number" id="valorLargo" inputmode="decimal" pattern="[0-9]+([\.,][0-9]+)?" min="1" max="9999" step="0.1" value="15.3" onchange="calculoTasaVentilacion()" />
             <sub>m.</sub>
@@ -174,7 +174,7 @@
       </div>
       <div class="cell-header">
         <p class="par-title">Parametros Personas & Actividad</p>
-        <span class="informacion">i</span>
+        <span id="infoPersonas" class="informacion">i</span>
       </div>
       <div class="parametros avanzados">
         <div class="valores valores__1-3">
@@ -245,7 +245,7 @@
     <div class="cell-parametro">
       <div class="cell-header">
         <p class="par-title">Parametros COVID-19</p>
-        <span class="informacion">i</span>
+        <span id="infoCovid" class="informacion">i</span>
       </div>
       <div class="parametros parametros-header">
         <div class="valores valores__1-3">
@@ -285,7 +285,7 @@
     <div class="cell-parametro">
       <div class="cell-header">
         <p class="par-title">Resultado condicional/evento</p>
-        <span class="informacion">i</span>
+        <span id="infoResultadoCondicional" class="informacion">i</span>
       </div>
       <div class="parametros parametros-header">
         <p class="parametros-header__title">UNA PERSONA / UN EVENTO</p>
@@ -329,14 +329,14 @@
     <div class="cell-parametro">
       <div class="cell-header">
         <p class="par-title">Resultado absoluto/evento</p>
-        <span class="informacion">i</span>
+        <span id="infoResultadoAbsolutoEvento" class="informacion">i</span>
       </div>
     </div>
 
     <div class="cell-parametro">
       <div class="cell-header">
         <p class="par-title">Resultado absoluto/multiples veces</p>
-        <span class="informacion">i</span>
+        <span id="infoResultadoAbsolutoEventoMultiples" class="informacion">i</span>
       </div>
     </div>
 
@@ -358,6 +358,11 @@
     </div>
 
   </div> <!-- .container -->
+  <div id="modalInfo" class="modal">
+    <div id="contentModal" class="modal-content">
+      <p>Info Parametros Ambientales...</p>
+    </div>
+  </div>
   <!-- Funciones propias -->
   <script src="js/functions.js"></script>
 </body>
