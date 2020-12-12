@@ -70,6 +70,18 @@ const valorMuertesSurgidas = document.getElementById('valorMuertesSurgidas')
 const infoResultadoCondicional = document.getElementById('infoResultadoCondicional')
 /* [FIN] Resultado condicional/evento */
 
+/* Valores Absolutos condicional/evento */
+//UNA PERSONA Y UN EVENTO
+const valorAbsProbInfeccion = document.getElementById('valorAbsProbInfeccion')
+const valorAbsProbHospitalizacion = document.getElementById('valorAbsProbHospitalizacion')
+const valorAbsProbMuerte = document.getElementById('valorAbsProbMuerte')
+const valorAbsRelMuerteAuto = document.getElementById('valorAbsRelMuerteAuto')
+//TODOS LOS ASISTENTES / UN EVENTO
+const valorAbsCOVIDSurgidos = document.getElementById('valorAbsCOVIDSurgidos')
+const valorAbsHospitalizacionesSurgidas = document.getElementById('valorAbsHospitalizacionesSurgidas')
+const valorAbsMuertesSurgidas = document.getElementById('valorAbsMuertesSurgidas')
+/* [FIN] Resultado condicional/evento */
+
 const infoResultadoAbsolutoEvento = document.getElementById('infoResultadoAbsolutoEvento')
 const infoResultadoAbsolutoEventoMultiples = document.getElementById('infoResultadoAbsolutoEventoMultiples')
 const modalInfo = document.getElementById("modalInfo");
@@ -157,7 +169,7 @@ icoClase.addEventListener('click', (event) => {
   document.getElementById("notas").innerHTML = str
 
   // parametros ambientales
-  valorLargo.value = 15.3
+  valorLargo.value = 7.6
   valorAncho.value = 6.1
   valorAlto.value = 3.1
   valorDuracionEvento.value = 50
@@ -189,7 +201,7 @@ icoClase.addEventListener('click', (event) => {
   valorHospitalizacion.value = 20
   valorMortalidad.value = 1
   // parametros covid-19
-
+  calculoTasaVentilacion()
 })
 icoCoro.addEventListener('click', (event) => {
   const iconos = document.getElementsByClassName("ico-clase")
@@ -235,6 +247,7 @@ icoCoro.addEventListener('click', (event) => {
   valorHospitalizacion.value = 20
   valorMortalidad.value = 4
   // parametros covid-19
+  calculoTasaVentilacion()
 })
 icoEstadio.addEventListener('click', (event) => {
   const iconos = document.getElementsByClassName("ico-clase")
@@ -281,6 +294,7 @@ icoEstadio.addEventListener('click', (event) => {
   valorHospitalizacion.value = 20
   valorMortalidad.value = 1
   // parametros covid-19
+  calculoTasaVentilacion()
 })
 icoMetro.addEventListener('click', (event) => {
   const iconos = document.getElementsByClassName("ico-clase")
@@ -325,6 +339,7 @@ icoMetro.addEventListener('click', (event) => {
   valorHospitalizacion.value = 20
   valorMortalidad.value = 1
   // parametros covid-19
+  calculoTasaVentilacion()
 })
 icoSuper.addEventListener('click', (event) => {
   const iconos = document.getElementsByClassName("ico-clase")
@@ -374,6 +389,7 @@ icoSuper.addEventListener('click', (event) => {
   valorHospitalizacion.value = 20
   valorMortalidad.value = 1
   // parametros covid-19
+  calculoTasaVentilacion()
 })
 
 document.addEventListener('DOMContentLoaded', calculoTasaVentilacion())
@@ -383,16 +399,13 @@ function calculoTasaVentilacion() {
   let volumen = m2 * parseFloat(valorAlto.value)
   let calc1 = volumen * (parseFloat(valorCambiosAire.value) + parseFloat(valorMedidasAdicionale.value))
   let tasa =  calc1 * 1000 / 3600 / valorNPersonas.value
-  valorTasaVentilacion.innerHTML = parseFloat(tasa).toFixed(2)
+  // valorTasaVentilacion.innerHTML = parseFloat(tasa).toFixed(2)
   let areaPersona = m2 / (0.305 * 0.305) / valorNPersonas.value
   let personaArea = valorNPersonas.value / m2
   let volumenPpersona = volumen / valorNPersonas.value
-  valorAreaPersona.innerHTML = parseFloat(areaPersona).toFixed(0)
-  valorPersonaArea.innerHTML = parseFloat(personaArea).toFixed(2)
-  valorVolumenPersona.innerHTML = parseFloat(volumenPpersona).toFixed(2)
-  // Calculamos el tamaño de la fuete para mostrar la tasa (ventilación * persona)
-  let font = (tasa < 10) ? 34 : (tasa >= 10 && tasa < 100) ? 30 : (tasa >= 100 && tasa < 1000) ? 26 : 22
-  valorTasaVentilacion.style.fontSize = `${font}px`
+  // valorAreaPersona.innerHTML = parseFloat(areaPersona).toFixed(0)
+  // valorPersonaArea.innerHTML = parseFloat(personaArea).toFixed(2)
+  // valorVolumenPersona.innerHTML = parseFloat(volumenPpersona).toFixed(2)
   // Calculamos Resultado condicional/evento
     //UNA PERSONA Y UN EVENTO
   let tasaEmision = parseFloat(valorExhalacion.value) * (1 - (parseFloat(valorMascExhalacion.value) / 100) * (parseFloat(valorPersonasMasc.value) / 100) ) * parseFloat(valorPersonasInfecciosas.value)
@@ -401,19 +414,107 @@ function calculoTasaVentilacion() {
   let concentracionMedia = tasaEmision / tasaPerdidaTotal / volumen * ( 1 - ( 1 / tasaPerdidaTotal / duracionEvento) * ( 1 - Math.exp(-tasaPerdidaTotal * duracionEvento)) )
   let inhalacionesPersona = concentracionMedia * parseFloat(valorRespiracion.value) * duracionEvento * ( 1 - (parseFloat(valorMascInhalacion.value) / 100) * (parseFloat(valorPersonasMasc.value) / 100) )
   let probInfeccion = parseFloat(inhalacionesPersona * 100)
-  valorProbInfeccion.innerHTML = `${probInfeccion.toFixed(2)}%`
+  // valorProbInfeccion.innerHTML = `${probInfeccion.toFixed(2)}%`
   let probHospitalizacion = (probInfeccion * parseFloat(valorHospitalizacion.value)) / 100
-  valorProbHospitalizacion.innerHTML = `${probHospitalizacion.toFixed(2)}%`
+  // valorProbHospitalizacion.innerHTML = `${probHospitalizacion.toFixed(2)}%`
   let probMuerte = (probInfeccion * parseFloat(valorMortalidad.value)) / 100
-  valorProbMuerte.innerHTML = `${probMuerte.toFixed(3)}%`
+  // valorProbMuerte.innerHTML = `${probMuerte.toFixed(3)}%`
   let relMuerteAuto = probMuerte / 0.00006
   valorRelMuerteAuto.innerHTML = parseInt(relMuerteAuto)
     //TODOS LOS ASISTENTES / UN EVENTO
   let personaSusceptible = ((valorNPersonas.value - valorPersonasInfecciosas.value) * (1 - valorInmune.value)) / 100
   let covidSurgidos = (personaSusceptible * probInfeccion)
-  valorCOVIDSurgidos.innerHTML = `${covidSurgidos.toFixed(2)}%`
+  // valorCOVIDSurgidos.innerHTML = `${covidSurgidos.toFixed(2)}%`
   let hospitalizacionesSurgidas = (covidSurgidos * parseFloat(valorHospitalizacion.value)) / 100
-  valorHospitalizacionesSurgidas.innerHTML = `${(hospitalizacionesSurgidas).toFixed(2)}%`
+  // valorHospitalizacionesSurgidas.innerHTML = `${(hospitalizacionesSurgidas).toFixed(2)}%`
   let muertesSugeridas = (covidSurgidos * parseFloat(valorMortalidad.value)) / 100
-  valorMuertesSurgidas.innerHTML = `${(muertesSugeridas).toFixed(4)}%`
+  // valorMuertesSurgidas.innerHTML = `${(muertesSugeridas).toFixed(4)}%`
+  // Calculamos Resultado ABSOLUTOS condicional/evento
+    //UNA PERSONA Y UN EVENTO
+  let baseAbsPorInfeccion = 1 - (1 - probInfeccion * valorInfeccioso.value)
+  let expAbsPorInfeccion = (valorNPersonas.value - valorPersonasInfecciosas.value)
+  let absPorInfeccion = Math.pow(baseAbsPorInfeccion, expAbsPorInfeccion)
+  // valorAbsProbInfeccion.innerHTML = `${absPorInfeccion.toFixed(3)}`
+  let absPorHospitalizacion = absPorInfeccion * probHospitalizacion
+  // valorAbsProbHospitalizacion.innerHTML = `${absPorHospitalizacion.toFixed(3)}`
+  let absProbMuerte = absPorInfeccion * parseFloat(valorMortalidad.value) / 100
+  // valorAbsProbMuerte.innerHTML = `${absProbMuerte.toFixed(3)}`
+  let absRelMuerteAuto = absProbMuerte / (0.0000006 * valorRepEvento.value)
+  valorAbsRelMuerteAuto.innerHTML = parseInt(absRelMuerteAuto)
+  let E13 = parseFloat(valorLargo.value)
+  let E14 = parseFloat(valorAncho.value)
+  let E15 = E14 * E13
+  let E16 = parseFloat(valorAlto.value)
+  let E17 = E13 * E14 * E16
+  let B19 = parseFloat(valorPresion.value)
+  let B20 = parseFloat(valorTemperatura.value)
+  let B22 = parseFloat(valorCO2AireLibre.value)
+  let B24 = parseFloat(valorDuracionEvento.value)
+  let E24 = B24 / 60
+  let B28 = parseFloat(valorCambiosAire.value)
+  let B29 = parseFloat(valorTasaDescomposicion.value)
+  let B30 = parseFloat(valorDeposicionSuperficie.value)
+  let B31 = parseFloat(valorMedidasAdicionales.value)
+  let B32 = B28 + B29 + B30 + B31
+  let B38 = parseFloat(valorNPersonas.value)
+  let E34 = E17 * (B28 + B31) * 1000 / 3600 / (B38)
+  valorTasaVentilacion.innerHTML = E34.toFixed(2)
+  // Calculamos el tamaño de la fuete para mostrar la tasa (ventilación * persona)
+  let font = (E34 < 10) ? 34 : (E34 >= 10 && E34 < 100) ? 30 : (E34 >= 100 && E34 < 1000) ? 26 : 22
+  valorTasaVentilacion.style.fontSize = `${font}px`
+  let B39 = parseFloat(valorPersonasInfecciosas.value)
+  let B40 = parseFloat(valorInmune.value)
+  let B41 = (B38 - B39) * (1 - B40)
+  let B43 = E15 / Math.pow(0.305, 2) / B38
+  valorAreaPersona.innerHTML = B43.toFixed(2)
+  let B44 = B38 / E15
+  valorPersonaArea.innerHTML = B44.toFixed(2)
+  let B45 = E17 / B38
+  valorVolumenPersona.innerHTML = B45.toFixed(2)
+  let B47 = parseFloat(valorRespiracion.value)
+  let B48 = parseFloat(valorCO2Persona.value)
+  let B49 = B48 * B38 * (1 / B19) * (273.15 + B20) / 273.15
+  let B51 = parseFloat(valorExhalacion.value)
+  let B52 = parseFloat(valorMascExhalacion.value)
+  let B53 = parseFloat(valorPersonasMasc.value)
+  let B54 = parseFloat(valorMascInhalacion.value)
+  let B58 = parseFloat(valorInfeccioso.value)
+  let B60 = parseFloat(valorHospitalizacion.value)
+  let B61 = parseFloat(valorMortalidad.value)
+  let B66 = B51 * (1 - (B52 / 100) * (B53 / 100)) * B39
+  let B67 = B66 / B32 / E17 * (1 - (1 / B32 / E24) * (1 - Math.exp(-B32 * E24)))
+  let B68 = B67 * B47 * E24 * (1 - (B54/100) * (B53/100))
+  let B71 = (1 - Math.exp(-B68)) * 100
+  valorProbInfeccion.innerHTML = `${B71.toFixed(3)}%`
+  let B72 = (B71 * B60) / 100
+  valorProbHospitalizacion.innerHTML = `${B72.toFixed(3)}%`
+  let B73 = (B71 * B61) / 100
+  valorProbMuerte.innerHTML = `${B73.toFixed(3)}%`
+  let B74 = (B73 / 0.0000006) / 100
+  valorRelMuerteAuto.innerHTML = `${B74.toFixed(3)}`
+  let B77 = (B41 * B71) / 100
+  valorCOVIDSurgidos.innerHTML = `${B77.toFixed(3)}`
+  let B78 = (B77 * B60) / 100
+  valorHospitalizacionesSurgidas.innerHTML = `${B78.toFixed(3)}`
+  let B79 = (B77 *B61) / 100
+  valorMuertesSurgidas.innerHTML = `${B79.toFixed(4)}`
+  let B82 = ( B49 * 3.6 / B28 / E17 * (1 - (1 / B28 / E24) * (1 - Math.exp(-B28 * E24)))) * 1000000 + B22
+  let B93 = (B39 + B41) * B58
+  let B96 = 1 - Math.pow((1 - (B71 / 100) * B58), B41)
+  valorAbsProbInfeccion.innerHTML = B96.toFixed(3)
+  let B97 = B96 * (B60 / 100)
+  valorAbsProbHospitalizacion.innerHTML = B97.toFixed(3)
+  let B98 = B96 * (B61 / 100)
+  valorAbsProbMuerte.innerHTML = B98.toFixed(4)
+  let B99 = (B98 / 100) / 0.0000006
+  valorAbsRelMuerteAuto.innerHTML = B99.toFixed(3)
+  let B102 = ((B41 - (B93/100)) * B96) / 100
+  valorAbsCOVIDSurgidos.innerHTML = B102.toFixed(4)
+  let B103 = B102 * B60 / 100
+  valorAbsHospitalizacionesSurgidas.innerHTML = B103.toFixed(4)
+  let B104 = B102 * B61 / 100
+  valorAbsMuertesSurgidas.innerHTML = B104.toFixed(5)
+  let B106 = ((B82-B22) * E24 / 1 * 0.01 / (B96 / 100)) + B22
+  valorCO2InhalarInfectar.innerHTML = parseInt(B106)
+  // debugger
 }
