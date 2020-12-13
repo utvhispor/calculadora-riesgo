@@ -1,9 +1,10 @@
 body {
   background-color: #ffffff;
   color: #2d2d2d;
-  margin: 0;
+  margin: 0 auto;
   font-size: 11px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  max-width: 768px;
 }
 
 .container {
@@ -96,6 +97,7 @@ h4.title span {
 }
 .parametros {
   background-color: #ffffff;
+  margin-top: 8px;
 }
 .parametros-header {
   margin-top: 23px;
@@ -179,7 +181,7 @@ h4.title span {
   text-align: center;
 }
 .parametros .valores {
-  padding: 36px 0 0 34%;
+  padding: 28px 0 0 34%;
 }
 .parametros .valores.valores__1-3 {
   margin: 0;
@@ -312,25 +314,24 @@ h4.title span {
 }
 /* Clases especificas para resoluciones superiores a 768 e inferiores a 1439 */
 @media (min-width: 768px) and (max-width: 1439px) {
-  .cell-parametro {
+  /* .cell-parametro {
     margin: 16px;
     width: calc(49% - 32px);
     float: left;
   }
   .cell-parametro:nth-child(2n) {
     clear: both;
-  }
+  } */
 }
 /* Clases especificas para resoluciones superiores a 1440 */
 @media (min-width: 1440px) {
-  .cell-parametro {
+  /* .cell-parametro {
     margin: 16px;
     width: calc(32% - 16px);
-    /* float: left; */
     display: inline-block;
     vertical-align: text-top;
   }
   .cell-parametro:nth-child(3n) {
     clear: both;
-  }
+  } */
 }

@@ -1,8 +1,10 @@
+const iconos = document.getElementsByClassName('ico-clase')
 const icoClase = document.getElementById('icoClase')
 const icoCoro = document.getElementById('icoCoro')
 const icoEstadio = document.getElementById('icoEstadio')
 const icoMetro = document.getElementById('icoMetro')
-const icoSuper= document.getElementById('icoSuper')
+const icoSuper = document.getElementById('icoSuper')
+const listIcoClase = [...document.getElementsByClassName('ico-clase')]
 
 const verParametrosAvanzados = document.getElementById('verParametrosAvanzados')
 const parametrosAvanzados = document.getElementById('parametrosAvanzados')
@@ -84,8 +86,9 @@ const valorAbsMuertesSurgidas = document.getElementById('valorAbsMuertesSurgidas
 
 const infoResultadoAbsolutoEvento = document.getElementById('infoResultadoAbsolutoEvento')
 const infoResultadoAbsolutoEventoMultiples = document.getElementById('infoResultadoAbsolutoEventoMultiples')
-const modalInfo = document.getElementById("modalInfo");
-
+const modalInfo = document.getElementById('modalInfo')
+const notas = document.getElementById('notas')
+const contentModal = document.getElementById('contentModal')
 
 footerParametrosAvanzados.addEventListener('click', (event) => {
   parametrosAvanzados.classList.toggle('mostrar__valores-adicionales')
@@ -109,64 +112,47 @@ avanzadosCOVID19.addEventListener('click', (event) => {
   divMortalidad.classList.toggle('hidden')
 })
 
-
-infoAmbientales.addEventListener('click', (event) => {
-  let str = "<p>Puede ingresar como \"ft\" o como \"m\" (una vez ingresado como \"m\", cambiar en \"ft\" no funciona)</p>"
-  document.getElementById("contentModal").innerHTML = str
-  modalInfo.style.display = "block";
-})
-
-infoPersonas.addEventListener('click', (event) => {
-  let str = "<p>Valor para su situación de interés</p>"
-  document.getElementById("contentModal").innerHTML = str
-  modalInfo.style.display = "block";
-})
-
-infoCovid.addEventListener('click', (event) => {
-  let str = "<p>Parámetro muy importante, específico para cada región y período de tiempo. Para resultados ABSOLUTOS (probablemente dada la prevalencia de la enfermedad en la población). Ver README</p>"
-  document.getElementById("contentModal").innerHTML = str
-  modalInfo.style.display = "block";
-})
-
-infoResultadoCondicional.addEventListener('click', (event) => {
-  let str = "<p>Más apropiado para simular brotes conocidos (por ejemplo, coro, restaurante, etc.) y en el peor de los casos para eventos regulares (si uno tiene la mala suerte de tener personas infecciosas presentes en un evento determinado).</p>"
-  document.getElementById("contentModal").innerHTML = str
-  modalInfo.style.display = "block";
-})
-
-infoResultadoAbsolutoEvento.addEventListener('click', (event) => {
-  let str = "<p>Más apropiado para la estimación del riesgo general, por ejemplo en un aula universitaria, reuniones en interiores, etc., donde a menudo las personas infecciosas no estarán presentes</p>"
-  document.getElementById("contentModal").innerHTML = str
-  modalInfo.style.display = "block";
-})
-
-infoResultadoAbsolutoEventoMultiples.addEventListener('click', (event) => {
-  let str = "<p>Consulte las preguntas frecuentes para obtener una estimación aproximada de las muertes por viaje en coche en un día determinado</p>"
-  document.getElementById("contentModal").innerHTML = str
-  modalInfo.style.display = "block";
-})
-
 window.onclick = function(event) {
   if (event.target == modalInfo) {
-    modalInfo.style.display = "none";
+    modalInfo.style.display = 'none'
   }
 }
 
+document.querySelectorAll('.informacion').forEach(
+  e => e.addEventListener('click', (e) => {
+    let str = {
+      infoAmbientales: '<p>Puede ingresar como "ft" o como "m" (una vez ingresado como "m", cambiar en "ft" no funciona)</p>',
+      infoPersonas: '<p>Valor para su situación de interés</p>',
+      infoCovid: '<p>Parámetro muy importante, específico para cada región y período de tiempo. Para resultados ABSOLUTOS (probablemente dada la prevalencia de la enfermedad en la población). Ver README</p>',
+      infoResultadoCondicional: '<p>Más apropiado para simular brotes conocidos (por ejemplo, coro, restaurante, etc.) y en el peor de los casos para eventos regulares (si uno tiene la mala suerte de tener personas infecciosas presentes en un evento determinado).</p>',
+      infoResultadoAbsolutoEvento: '<p>Más apropiado para la estimación del riesgo general, por ejemplo en un aula universitaria, reuniones en interiores, etc., donde a menudo las personas infecciosas no estarán presentes</p>',
+      infoResultadoAbsolutoEventoMultiples: '<p>Consulte las preguntas frecuentes para obtener una estimación aproximada de las muertes por viaje en coche en un día determinado</p>'
+    }
+    let info = e.target.id
+    fContentModal(str[info])
+  })
+)
+
+function fContentModal (val) {
+  contentModal.innerHTML = val
+  modalInfo.style.display = 'block'
+}
+
+function removeClassActive (val) {
+  listIcoClase.map(item => item.classList.remove('active'))
+  val.classList.add('active')
+}
+
 icoClase.addEventListener('click', (event) => {
-  const iconos = document.getElementsByClassName("ico-clase")
-  let i;
-  for (i = 0; i < iconos.length; i++) {
-    iconos[i].classList.remove("active");
-  }
-  document.getElementById("icoClase").classList.add("active")
-  let str = "<strong>Frecuencia respiratoria</strong><br /><br />"
-  str += "Usando la mitad de la actividad sedentaria y ligera, 16-21 años por defecto. La frequencia respiratoria solo importa para personas susceptibles. Para estudiar la transmisión de los estudiantes al maestro, es necesario aumentar este valor en consecuencia.<br />"
-  str += "Para estudiar la transmisión a niños pequeños, la frequencia respiratoria también debe ajustarse de acuerdo con la tabla Readme.<br /><br />"
-  str += "<strong>Tasa de emisión Quanta</strong><br /><br />"
-  str += "El valor actual es para una profesora hablando mucho.<br />"
-  str += "Para los adolescentes, se usan los valores del archivo Readme, según la actividad.<br />"
-  str += "Se cree que los niños pequeños son menos contagiosos y también respiran menos aire, por lo que quizás reduzca la Tasa de emisión Quanta en x5."
-  document.getElementById("notas").innerHTML = str
+  removeClassActive(icoClase)
+  let str = '<strong>Frecuencia respiratoria</strong><br /><br />'
+  str += 'Usando la mitad de la actividad sedentaria y ligera, 16-21 años por defecto. La frequencia respiratoria solo importa para personas susceptibles. Para estudiar la transmisión de los estudiantes al maestro, es necesario aumentar este valor en consecuencia.<br />'
+  str += 'Para estudiar la transmisión a niños pequeños, la frequencia respiratoria también debe ajustarse de acuerdo con la tabla Readme.<br /><br />'
+  str += '<strong>Tasa de emisión Quanta</strong><br /><br />'
+  str += 'El valor actual es para una profesora hablando mucho.<br />'
+  str += 'Para los adolescentes, se usan los valores del archivo Readme, según la actividad.<br />'
+  str += 'Se cree que los niños pequeños son menos contagiosos y también respiran menos aire, por lo que quizás reduzca la Tasa de emisión Quanta en x5.'
+  notas.innerHTML = str
 
   // parametros ambientales
   valorLargo.value = 7.6
@@ -204,15 +190,10 @@ icoClase.addEventListener('click', (event) => {
   calculoTasaVentilacion()
 })
 icoCoro.addEventListener('click', (event) => {
-  const iconos = document.getElementsByClassName("ico-clase")
-  let i;
-  for (i = 0; i < iconos.length; i++) {
-    iconos[i].classList.remove("active");
-  }
-  document.getElementById("icoCoro").classList.add("active")
-  let str = "La probabilidad de muerte se establece más alta debido a la mayor edad de los miembros del coro (el 75% de los enfermos tenían >= 65 años). Sugerir cambiar al 1% para aplicaciones generales.<br /><br />"
-  str += "Probabilidad de ser infeccioso calculada a partir de la prevalencia de la enfermedad en el condado en ese momento (7 casos * 2 para dar cuenta de los casos no detectados / 129000 habitantes del condado), ver Miller et al. 2020.<br /><br />"
-  document.getElementById("notas").innerHTML = str
+  removeClassActive(icoCoro)
+  let str = 'La probabilidad de muerte se establece más alta debido a la mayor edad de los miembros del coro (el 75% de los enfermos tenían >= 65 años). Sugerir cambiar al 1% para aplicaciones generales.<br /><br />'
+  str += 'Probabilidad de ser infeccioso calculada a partir de la prevalencia de la enfermedad en el condado en ese momento (7 casos * 2 para dar cuenta de los casos no detectados / 129000 habitantes del condado), ver Miller et al. 2020.<br /><br />'
+  notas.innerHTML = str
 
   // parametros ambientales
   valorLargo.value = 9.2
@@ -250,16 +231,11 @@ icoCoro.addEventListener('click', (event) => {
   calculoTasaVentilacion()
 })
 icoEstadio.addEventListener('click', (event) => {
-  const iconos = document.getElementsByClassName("ico-clase")
-  let i;
-  for (i = 0; i < iconos.length; i++) {
-    iconos[i].classList.remove("active");
-  }
-  document.getElementById("icoEstadio").classList.add("active")
-  let str = "Este es un caso para un estadio de fútbol, como se explica en este tweet: <a href='https://twitter.com/jljcolorado/status/1289254898131820550'>https://twitter.com/jljcolorado/status/1289254898131820550</a><br /><br />"
-  str += "E basado en este articulo: <a href='https://www.sciencedirect.com/science/article/pii/S1352231013004494'>https://www.sciencedirect.com/science/article/pii/S1352231013004494</a><br /><br />"
-  str += "Tener en cuenta que para el riesgo de infección, la calculadora solo estima el riesgo de infección a través del aire más allá de las proximidades. Dado que la distancia social no se mantendría en tal evento, esto será una gran subestimación."
-  document.getElementById("notas").innerHTML = str
+  removeClassActive(icoEstadio)
+  let str = 'Este es un caso para un estadio de fútbol, como se explica en este tweet: <a href="https://twitter.com/jljcolorado/status/1289254898131820550">https://twitter.com/jljcolorado/status/1289254898131820550</a><br /><br />'
+  str += 'E basado en este articulo: <a href="https://www.sciencedirect.com/science/article/pii/S1352231013004494">https://www.sciencedirect.com/science/article/pii/S1352231013004494</a><br /><br />'
+  str += 'Tener en cuenta que para el riesgo de infección, la calculadora solo estima el riesgo de infección a través del aire más allá de las proximidades. Dado que la distancia social no se mantendría en tal evento, esto será una gran subestimación.'
+  notas.innerHTML = str
 
   // parametros ambientales
   valorLargo.value = 183
@@ -297,14 +273,9 @@ icoEstadio.addEventListener('click', (event) => {
   calculoTasaVentilacion()
 })
 icoMetro.addEventListener('click', (event) => {
-  const iconos = document.getElementsByClassName("ico-clase")
-  let i;
-  for (i = 0; i < iconos.length; i++) {
-    iconos[i].classList.remove("active");
-  }
-  document.getElementById("icoMetro").classList.add("active")
-  const str = ""
-  document.getElementById("notas").innerHTML = str
+  removeClassActive(icoMetro)
+  let str = ''
+  notas.innerHTML = str
 
   // parametros ambientales
   valorLargo.value = 13.4
@@ -342,19 +313,14 @@ icoMetro.addEventListener('click', (event) => {
   calculoTasaVentilacion()
 })
 icoSuper.addEventListener('click', (event) => {
-  const iconos = document.getElementsByClassName("ico-clase")
-  let i;
-  for (i = 0; i < iconos.length; i++) {
-    iconos[i].classList.remove("active");
-  }
-  document.getElementById("icoSuper").classList.add("active")
-  let str = "Basado en un supermercado específico en Boulder, Colorado.<br /><br />"
-  str +="Dimensiones horizontales estimadas de Google Maps (usando escala), altura usando imágenes de Google Street View (usando personas presentes para escala).<br /><br />"
-  str +="Tasa de ventilación estimada a partir del estándar ASHRAE en la página Readme.<br /><br />"
-  str +="Promedio diario típico de ocupación, basado en mis visitas al espacio antes de la pandemia (puede ser menor ahora).<br /><br />"
-  str +="Otros parámetros estimados en el Readme para esta situación.<br /><br />"
-  str +="Esto es para un trabajador de un supermercado. Para un cliente, se cambia el tiempo dedicado a la historia a, por ejemplo, 1 hora, 4 veces a la semana para simular 1 mes."
-  document.getElementById("notas").innerHTML = str
+  removeClassActive(icoSuper)
+  let str = 'Basado en un supermercado específico en Boulder, Colorado.<br /><br />'
+  str +='Dimensiones horizontales estimadas de Google Maps (usando escala), altura usando imágenes de Google Street View (usando personas presentes para escala).<br /><br />'
+  str +='Tasa de ventilación estimada a partir del estándar ASHRAE en la página Readme.<br /><br />'
+  str +='Promedio diario típico de ocupación, basado en mis visitas al espacio antes de la pandemia (puede ser menor ahora).<br /><br />'
+  str +='Otros parámetros estimados en el Readme para esta situación.<br /><br />'
+  str +='Esto es para un trabajador de un supermercado. Para un cliente, se cambia el tiempo dedicado a la historia a, por ejemplo, 1 hora, 4 veces a la semana para simular 1 mes.'
+  notas.innerHTML = str
 
   // parametros ambientales
   valorLargo.value = 24.4
@@ -395,52 +361,6 @@ icoSuper.addEventListener('click', (event) => {
 document.addEventListener('DOMContentLoaded', calculoTasaVentilacion())
 
 function calculoTasaVentilacion() {
-  let m2 = parseFloat(valorLargo.value) * parseFloat(valorAncho.value)
-  let volumen = m2 * parseFloat(valorAlto.value)
-  let calc1 = volumen * (parseFloat(valorCambiosAire.value) + parseFloat(valorMedidasAdicionale.value))
-  let tasa =  calc1 * 1000 / 3600 / valorNPersonas.value
-  // valorTasaVentilacion.innerHTML = parseFloat(tasa).toFixed(2)
-  let areaPersona = m2 / (0.305 * 0.305) / valorNPersonas.value
-  let personaArea = valorNPersonas.value / m2
-  let volumenPpersona = volumen / valorNPersonas.value
-  // valorAreaPersona.innerHTML = parseFloat(areaPersona).toFixed(0)
-  // valorPersonaArea.innerHTML = parseFloat(personaArea).toFixed(2)
-  // valorVolumenPersona.innerHTML = parseFloat(volumenPpersona).toFixed(2)
-  // Calculamos Resultado condicional/evento
-    //UNA PERSONA Y UN EVENTO
-  let tasaEmision = parseFloat(valorExhalacion.value) * (1 - (parseFloat(valorMascExhalacion.value) / 100) * (parseFloat(valorPersonasMasc.value) / 100) ) * parseFloat(valorPersonasInfecciosas.value)
-  let tasaPerdidaTotal = parseFloat(valorCambiosAire.value) + parseFloat(valorTasaDescomposicion.value) + parseFloat(valorDeposicionSuperfic.value) + parseFloat(valorMedidasAdicionale.value)
-  let duracionEvento = parseFloat(valorDuracionEvento.value) / 60
-  let concentracionMedia = tasaEmision / tasaPerdidaTotal / volumen * ( 1 - ( 1 / tasaPerdidaTotal / duracionEvento) * ( 1 - Math.exp(-tasaPerdidaTotal * duracionEvento)) )
-  let inhalacionesPersona = concentracionMedia * parseFloat(valorRespiracion.value) * duracionEvento * ( 1 - (parseFloat(valorMascInhalacion.value) / 100) * (parseFloat(valorPersonasMasc.value) / 100) )
-  let probInfeccion = parseFloat(inhalacionesPersona * 100)
-  // valorProbInfeccion.innerHTML = `${probInfeccion.toFixed(2)}%`
-  let probHospitalizacion = (probInfeccion * parseFloat(valorHospitalizacion.value)) / 100
-  // valorProbHospitalizacion.innerHTML = `${probHospitalizacion.toFixed(2)}%`
-  let probMuerte = (probInfeccion * parseFloat(valorMortalidad.value)) / 100
-  // valorProbMuerte.innerHTML = `${probMuerte.toFixed(3)}%`
-  let relMuerteAuto = probMuerte / 0.00006
-  valorRelMuerteAuto.innerHTML = parseInt(relMuerteAuto)
-    //TODOS LOS ASISTENTES / UN EVENTO
-  let personaSusceptible = ((valorNPersonas.value - valorPersonasInfecciosas.value) * (1 - valorInmune.value)) / 100
-  let covidSurgidos = (personaSusceptible * probInfeccion)
-  // valorCOVIDSurgidos.innerHTML = `${covidSurgidos.toFixed(2)}%`
-  let hospitalizacionesSurgidas = (covidSurgidos * parseFloat(valorHospitalizacion.value)) / 100
-  // valorHospitalizacionesSurgidas.innerHTML = `${(hospitalizacionesSurgidas).toFixed(2)}%`
-  let muertesSugeridas = (covidSurgidos * parseFloat(valorMortalidad.value)) / 100
-  // valorMuertesSurgidas.innerHTML = `${(muertesSugeridas).toFixed(4)}%`
-  // Calculamos Resultado ABSOLUTOS condicional/evento
-    //UNA PERSONA Y UN EVENTO
-  let baseAbsPorInfeccion = 1 - (1 - probInfeccion * valorInfeccioso.value)
-  let expAbsPorInfeccion = (valorNPersonas.value - valorPersonasInfecciosas.value)
-  let absPorInfeccion = Math.pow(baseAbsPorInfeccion, expAbsPorInfeccion)
-  // valorAbsProbInfeccion.innerHTML = `${absPorInfeccion.toFixed(3)}`
-  let absPorHospitalizacion = absPorInfeccion * probHospitalizacion
-  // valorAbsProbHospitalizacion.innerHTML = `${absPorHospitalizacion.toFixed(3)}`
-  let absProbMuerte = absPorInfeccion * parseFloat(valorMortalidad.value) / 100
-  // valorAbsProbMuerte.innerHTML = `${absProbMuerte.toFixed(3)}`
-  let absRelMuerteAuto = absProbMuerte / (0.0000006 * valorRepEvento.value)
-  valorAbsRelMuerteAuto.innerHTML = parseInt(absRelMuerteAuto)
   let E13 = parseFloat(valorLargo.value)
   let E14 = parseFloat(valorAncho.value)
   let E15 = E14 * E13
@@ -516,5 +436,4 @@ function calculoTasaVentilacion() {
   valorAbsMuertesSurgidas.innerHTML = B104.toFixed(5)
   let B106 = ((B82-B22) * E24 / 1 * 0.01 / (B96 / 100)) + B22
   valorCO2InhalarInfectar.innerHTML = parseInt(B106)
-  // debugger
 }
