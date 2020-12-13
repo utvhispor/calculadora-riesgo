@@ -89,6 +89,7 @@ const infoResultadoAbsolutoEventoMultiples = document.getElementById('infoResult
 const modalInfo = document.getElementById('modalInfo')
 const notas = document.getElementById('notas')
 const contentModal = document.getElementById('contentModal')
+const buttonClose = document.getElementById('buttonClose')
 
 footerParametrosAvanzados.addEventListener('click', (event) => {
   parametrosAvanzados.classList.toggle('mostrar__valores-adicionales')
@@ -118,18 +119,64 @@ window.onclick = function(event) {
   }
 }
 
+buttonClose.onclick = function() {
+  modalInfo.style.display = "none";
+}
+
+let strInfoAmbientales = 'Largo - Puede ingresar como "pies" o como "m" (una vez ingresado como "m", cambiar en "pies" no funciona)<br /><br />'
+strInfoAmbientales += 'Ancho - Puede ingresar como "pies" o como "m" (una vez ingresado como "m", cambiar en "pies" no funciona)<br /><br />'
+strInfoAmbientales += 'Alto - Puede ingresar como "pies" o como "m" (una vez ingresado como "m", cambiar en "pies" no funciona)<br /><br />'
+strInfoAmbientales += 'Duracion evento - Valor para su situación de interés<br /><br />'
+strInfoAmbientales += 'Nº rep. evento - Por ejemplo múltiples reuniones de clase, múltiples desplazamientos en transporte público, etc.<br /><br />'
+strInfoAmbientales += 'Cambios de aire - Valor en h-1: Readme: Igual que "cambios de aire por hora". Valor en L/s/per para comparar con las pautas (por ejemplo, ASHRAE 62.1)<br /><br />'
+strInfoAmbientales += 'Presión - Utilizado solo para el cálculo de CO2<br /><br />'
+strInfoAmbientales += 'Temperatura - Use el <a href="https://www.google.com/search?q=fahrenheit+to+c+converter">convertidor web</a> si es necesario para convertir Fahrenheit -> Celsius. Se usa para el cálculo de CO2, eventualmente para la tasa de supervivencia del virus<br /><br />'
+strInfoAmbientales += 'Humedad - Aún no se usa, pero eventualmente se puede usar para la tasa de supervivencia del virus.<br /><br />'
+strInfoAmbientales += 'CO2 al aire libre - Ver Readme<br /><br />'
+strInfoAmbientales += 'Tasa descomposicón - Ver Readme: puede estimar para una determinada T, RH, UV a partir del estimador DHS<br /><br />'
+strInfoAmbientales += 'Deposicón superficies - Buonnano y col. (2020), Miller et al. (2020). Puede variar de 0,24 a 1,5 h-1, según el rango de tamaño de partícula<br /><br />'
+strInfoAmbientales += 'Medidas control adicionales - Por ejemplo filtrado de recirculacion de aire, filtro de aire HEPA, desinfección UV, etc. Consulte las preguntas frecuentes, el archivo Readme de calculo para filtro HEPA portátil<br /><br />'
+strInfoAmbientales += 'Tasa de pérdida total de primer orden - Suma de todas las tarifas de primer orden<br /><br />'
+strInfoAmbientales += 'Tasa de ventilación por persona - Este es el valor de la ventilación que realmente importa para la transmisión de enfermedades. Incluye medidas de control adicionales<br /><br />'
+
+let strInfoPersonas = 'Nº Personas - Valor para su situación de interés<br /><br />'
+strInfoPersonas += 'Población inmune - De los informes de seroprevalencia, dependerá de cada ubicación y hora, consulte el archivo Readme<br /><br />'
+strInfoPersonas += 'Personas susceptibles - Valor para su situación de interés<br /><br />'
+strInfoPersonas += 'Frec. respiratoria - Ver Readme. Varía mucho según el nivel de actividad<br /><br />'
+strInfoPersonas += 'Exhalación cuántica - Ver Reame. Depende mucho de la actividad, también como persona. Este es el parámetro más incierto, pruebar con diferentes valores.<br /><br />'
+strInfoPersonas += 'Ef. mascarilla exhalación - 0 si la persona infectada no lleva máscara. Ver Readme<br /><br />'
+strInfoPersonas += 'Personas con mascarillas - Valor para su situación. Se aplica a todo el mundo tanto para la emisión como para la inhalación. Modificar fórmulas manualmente si es necesario<br /><br />'
+strInfoPersonas += 'Ef. mascarilla inhalación - Ver Readme<br /><br />'
+strInfoPersonas += 'Pers. infecciosas - Mantenga esto en uno a menos que realmente desee para estudiar casos diferentes; vea los resultados condicionales y absolutos<br /><br />'
+strInfoPersonas += 'Tasa CO2 por persona - Ver Readme. Esto no afecta el cálculo de la infección, solo el uso de CO2 como indicador, se podría ignorar<br /><br />'
+strInfoPersonas += 'Tasa CO2 para todas las personas - El anterior multiplicado por el número de personas y aplicando la ley de los gases ideales para convertir a P&T ambiental<br /><br />'
+
+let strInfoCovid = 'Probabilidad de ser infeccioso - Parámetro muy importante, específico para cada región y período de tiempo. Para resultados ABSOLUTOS (probablemente dada la prevalencia de la enfermedad en la población). Ver Readme<br /><br />'
+strInfoCovid += 'Tasa de hospitalización - De informes de noticias. Varía mucho con la edad y los factores de riesgo.<br /><br />'
+strInfoCovid += 'Índice de mortalidad - De informes de noticias. Varía mucho con la edad y los factores de riesgo (1% típico - más alto para personas mayores / en riesgo).<br /><br />'
+
+let strInfoResultadoCondicional = 'Tasa de emisión neta - Incluye el número de personas infectadas presentes<br /><br />'
+strInfoResultadoCondicional += 'Concentración media Quanta - Solución analítica del modelo de caja. La ecuación (4) de Miller et al.(2020)<br /><br />'
+strInfoResultadoCondicional += 'Prob. infección - Aplicando el modelo de infección de Wells-Riley a la cantidad de dosis infecciosas inhaladas. La ecuación (1) de Miller et al.(2020)<br /><br />'
+strInfoResultadoCondicional += 'Relación con el riesgo de muerte por viaje en automóvil - Consulte las FAQ para obtener una estimación aproximada de las muertes por viaje en automóvil en un día determinado<br /><br />'
+strInfoResultadoCondicional += 'Casos COVID surgidos - Número de personas. Multiplica la probabilidad de una persona por el número de personas susceptibles presentes.<br /><br />'
+strInfoResultadoCondicional += 'Hospitalizaciones surgidas - Número de personas.<br /><br />'
+strInfoResultadoCondicional += 'Muertes surgidas - Número de personas.<br /><br />'
+strInfoResultadoCondicional += 'Proporción media de mezcla de CO2 - Solución analítica del modelo de caja. La ecuación (4) de Miller et al.(2020). Consulte las FAQ para conocer las diferencias con quanta calc<br /><br />'
+
+const infoModal = {
+  infoAmbientales: strInfoAmbientales,
+  infoPersonas: strInfoPersonas,
+  infoCovid: strInfoCovid,
+  infoResultadoCondicional: strInfoResultadoCondicional,
+  infoResultadoAbsolutoEvento: 'Más apropiado para la estimación del riesgo general, por ejemplo en un aula universitaria, reuniones en interiores, etc., donde a menudo las personas infecciosas no estarán presentes',
+  infoResultadoAbsolutoEventoMultiples: 'Consulte las preguntas frecuentes para obtener una estimación aproximada de las muertes por viaje en coche en un día determinado'
+}
+
 document.querySelectorAll('.informacion').forEach(
   e => e.addEventListener('click', (e) => {
-    let str = {
-      infoAmbientales: '<p>Puede ingresar como "ft" o como "m" (una vez ingresado como "m", cambiar en "ft" no funciona)</p>',
-      infoPersonas: '<p>Valor para su situación de interés</p>',
-      infoCovid: '<p>Parámetro muy importante, específico para cada región y período de tiempo. Para resultados ABSOLUTOS (probablemente dada la prevalencia de la enfermedad en la población). Ver README</p>',
-      infoResultadoCondicional: '<p>Más apropiado para simular brotes conocidos (por ejemplo, coro, restaurante, etc.) y en el peor de los casos para eventos regulares (si uno tiene la mala suerte de tener personas infecciosas presentes en un evento determinado).</p>',
-      infoResultadoAbsolutoEvento: '<p>Más apropiado para la estimación del riesgo general, por ejemplo en un aula universitaria, reuniones en interiores, etc., donde a menudo las personas infecciosas no estarán presentes</p>',
-      infoResultadoAbsolutoEventoMultiples: '<p>Consulte las preguntas frecuentes para obtener una estimación aproximada de las muertes por viaje en coche en un día determinado</p>'
-    }
     let info = e.target.id
-    fContentModal(str[info])
+    fContentModal(infoModal[info])
   })
 )
 

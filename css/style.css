@@ -286,6 +286,22 @@ h4.title span {
   width: 30%;
   border-radius: 8px;
 }
+
+.close {
+  color: #aaaaaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: relative;
+  margin-top: -27px;
+  margin-left: 99%;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
 /* Modal */
 
 /* Iconos Ver/Ocultar */
