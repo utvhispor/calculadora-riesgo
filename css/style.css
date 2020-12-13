@@ -7,6 +7,16 @@ body {
   max-width: 768px;
 }
 
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.select-idioma {
+  height: 20px;
+}
+
 .container {
   padding: 0 16px;
 }
