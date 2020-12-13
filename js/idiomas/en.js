@@ -58,5 +58,16 @@ const en = {
     i18n_co2_inhalar: 'CO2 to inhale 1 hour to infect 1% (ppm)',
     i18n_resultado_absoluto_multiples_veces: 'Result absolute/multiple times',
     i18n_notas_particulares: 'Particular notes for this case',
-    i18n_mas_info: 'More Information'
+    i18n_mas_info: 'More Information',
+    i18n_notaClase: ``,
+    i18n_notaCoro: ``,
+    i18n_notaEstadio: ``,
+    i18n_notaMetro: ``,
+    i18n_notaSuper: ``,
+    i18n_infoAmbientales: ``,
+    i18n_infoPersonas: ``,
+    i18n_infoCovid: ``,
+    i18n_infoResultadoCondicional: ``,
+    i18n_infoResultadoAbsolutoEvento: ``,
+    i18n_infoResultadoAbsolutoEventoMultiples: ``
 }
