@@ -302,6 +302,11 @@ h4.title span {
   text-decoration: none;
   cursor: pointer;
 }
+
+.title_modal {
+  text-align: center;
+  margin-bottom: 24px;
+}
 /* Modal */
 
 /* Iconos Ver/Ocultar */
