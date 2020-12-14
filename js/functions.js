@@ -30,7 +30,6 @@ const valorTasaDescomposicion = document.getElementById('valorTasaDescomposicion
 const valorDeposicionSuperfic = document.getElementById('valorDeposicionSuperficie')
 const valorMedidasAdicionales = document.getElementById('valorMedidasAdicionales')
 const valorMedidasAdicionale = document.getElementById('valorMedidasAdicionales')
-const infoAmbientales = document.getElementById('infoAmbientales')
 /* [FIN] Valores Parámetros Ambientales */
 
 /* Valores Parámetros Personas/Actividad */
@@ -48,7 +47,6 @@ const valorPersonasMasc = document.getElementById('valorPersonasMasc')
 const valorMascInhalacion = document.getElementById('valorMascInhalacion')
 const valorPersonasInfecciosas = document.getElementById('valorPersonasInfecciosas')
 const valorCO2Persona = document.getElementById('valorCO2Persona')
-const infoPersonas = document.getElementById('infoPersonas')
 /* [FIN] Valores Parámetros Personas/Actividad */
 
 /* Valores Parámetros COVID-19 */
@@ -58,7 +56,6 @@ const valorInfeccioso = document.getElementById('valorInfeccioso')
 const valorHospitalizacion = document.getElementById('valorHospitalizacion')
 const valorMortalidad = document.getElementById('valorMortalidad')
 const avanzadosCOVID19 = document.getElementById('avanzadosCOVID19')
-const infoCovid = document.getElementById('infoCovid')
 /* [FIN] Valores Parámetros COVID-19 */
 
 /* Valores Resultado condicional/evento */
@@ -71,7 +68,6 @@ const valorRelMuerteAuto = document.getElementById('valorRelMuerteAuto')
 const valorCOVIDSurgidos = document.getElementById('valorCOVIDSurgidos')
 const valorHospitalizacionesSurgidas = document.getElementById('valorHospitalizacionesSurgidas')
 const valorMuertesSurgidas = document.getElementById('valorMuertesSurgidas')
-const infoResultadoCondicional = document.getElementById('infoResultadoCondicional')
 /* [FIN] Resultado condicional/evento */
 
 /* Valores Absolutos condicional/evento */
@@ -86,8 +82,6 @@ const valorAbsHospitalizacionesSurgidas = document.getElementById('valorAbsHospi
 const valorAbsMuertesSurgidas = document.getElementById('valorAbsMuertesSurgidas')
 /* [FIN] Resultado condicional/evento */
 
-const infoResultadoAbsolutoEvento = document.getElementById('infoResultadoAbsolutoEvento')
-const infoResultadoAbsolutoEventoMultiples = document.getElementById('infoResultadoAbsolutoEventoMultiples')
 const modalInfo = document.getElementById('modalInfo')
 const notas = document.getElementById('notas')
 const contentModal = document.getElementById('contentModal')
