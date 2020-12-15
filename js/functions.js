@@ -19,7 +19,6 @@ const valorAncho = document.getElementById('valorAncho')
 const valorAlto = document.getElementById('valorAlto')
 const valorDuracionEvento = document.getElementById('valorDuracionEvento')
 const valorRepEvento = document.getElementById('valorRepEvento')
-const valorRepEvent = document.getElementById('valorRepEento')
 const valorCambiosAire = document.getElementById('valorCambiosAire')
 const valorPresion = document.getElementById('valorPresion')
 const valorTemperatura = document.getElementById('valorTemperatura')
@@ -80,6 +79,19 @@ const valorAbsRelMuerteAuto = document.getElementById('valorAbsRelMuerteAuto')
 const valorAbsCOVIDSurgidos = document.getElementById('valorAbsCOVIDSurgidos')
 const valorAbsHospitalizacionesSurgidas = document.getElementById('valorAbsHospitalizacionesSurgidas')
 const valorAbsMuertesSurgidas = document.getElementById('valorAbsMuertesSurgidas')
+const valorCO2InhalarInfectar = document.getElementById('valorCO2InhalarInfectar')
+/* [FIN] Resultado condicional/evento */
+
+/* Valores Absolutos condicional/multi-evento */
+//UNA PERSONA Y MULTI EVENTO
+const valorAbsProbInfeccionMulti = document.getElementById('valorAbsProbInfeccionMulti')
+const valorAbsProbHospitalizacionMulti = document.getElementById('valorAbsProbHospitalizacionMulti')
+const valorAbsProbMuerteMulti = document.getElementById('valorAbsProbMuerteMulti')
+const valorAbsRelMuerteAutoMulti = document.getElementById('valorAbsRelMuerteAutoMulti')
+//TODOS LOS ASISTENTES / MULTI EVENTO
+const valorAbsCOVIDSurgidosMulti = document.getElementById('valorAbsCOVIDSurgidosMulti')
+const valorAbsHospitalizacionesSurgidasMulti = document.getElementById('valorAbsHospitalizacionesSurgidasMulti')
+const valorAbsMuertesSurgidasMulti = document.getElementById('valorAbsMuertesSurgidasMulti')
 /* [FIN] Resultado condicional/evento */
 
 const modalInfo = document.getElementById('modalInfo')
@@ -349,6 +361,7 @@ function calculoTasaVentilacion() {
   let B22 = parseFloat(valorCO2AireLibre.value)
   let B24 = parseFloat(valorDuracionEvento.value)
   let E24 = B24 / 60
+  let B26 = parseFloat(valorRepEvento.value)
   let B28 = parseFloat(valorCambiosAire.value)
   let B29 = parseFloat(valorTasaDescomposicion.value)
   let B30 = parseFloat(valorDeposicionSuperficie.value)
@@ -414,6 +427,20 @@ function calculoTasaVentilacion() {
   valorAbsMuertesSurgidas.innerHTML = B104.toFixed(5)
   let B106 = ((B82-B22) * E24 / 1 * 0.01 / (B96 / 100)) + B22
   valorCO2InhalarInfectar.innerHTML = parseInt(B106)
+  let B111 = (1 - Math.pow((1 - (B96 / 100)), B26)) * 100
+  valorAbsProbInfeccionMulti.innerHTML = B111.toFixed(3)
+  let B112 = B111 * (B60 / 100)
+  valorAbsProbHospitalizacionMulti.innerHTML = B112.toFixed(3)
+  let B113 = B111 * (B61 / 100)
+  valorAbsProbMuerteMulti.innerHTML = B113.toFixed(4)
+  let B114 = (B113 / 100) / (0.0000006 * B26)
+  valorAbsRelMuerteAutoMulti.innerHTML = B114.toFixed(3)
+  let B117 = ((B41 - (B93/100)) * B111) / 100
+  valorAbsCOVIDSurgidosMulti.innerHTML = B117.toFixed(4)
+  let B118 = B117 * B60 / 100
+  valorAbsHospitalizacionesSurgidasMulti.innerHTML = B118.toFixed(4)
+  let B119 = B117 * B61 / 100
+  valorAbsMuertesSurgidasMulti.innerHTML = B119.toFixed(5)
 }
 
 function cambiarIdioma() {
