@@ -1,12 +1,30 @@
 let _idioma = ''
 
-const iconos = document.getElementsByClassName('ico-clase')
+// const iconos = document.getElementsByClassName('ico-clase')
 const icoClase = document.getElementById('icoClase')
 const icoCoro = document.getElementById('icoCoro')
 const icoEstadio = document.getElementById('icoEstadio')
 const icoMetro = document.getElementById('icoMetro')
 const icoSuper = document.getElementById('icoSuper')
-const listIcoClase = [...document.getElementsByClassName('ico-clase')]
+const listIcoLugar = [...document.getElementsByClassName('ico-lugar')]
+
+const icoAmbientales = document.getElementById('icoAmbientales')
+const icoPersonaActividad = document.getElementById('icoPersonaActividad')
+const icoCovid19 = document.getElementById('icoCovid19')
+const listIcoParametros = [...document.getElementsByClassName('ico-parametro')]
+const CellParametrosAmbientales = document.getElementById('parametros-ambientales')
+const CellParametrosPersonasActividad = document.getElementById('parametros-personas-actividad')
+const CellParametrosCovid19 = document.getElementById('parametros-covid19')
+const listCellParametros = [...document.getElementsByClassName('show-parametro')]
+
+const icoCondicionalEvento = document.getElementById('icoCondicionalEvento')
+const icoAbsolutoEvento = document.getElementById('icoAbsolutoEvento')
+const icoAbsolutoMultiplesVeces = document.getElementById('icoAbsolutoMultiplesVeces')
+const listIcoResultados = [...document.getElementsByClassName('ico-resultado')]
+const CellResultadoCondicional = document.getElementById('resultado-condicional')
+const CellResultadoAbsoluto = document.getElementById('resultado-absoluto')
+const CellResultadoMultiveces = document.getElementById('resultado-multiveces')
+const listCellResultados = [...document.getElementsByClassName('show-resultado')]
 
 const verParametrosAvanzados = document.getElementById('verParametrosAvanzados')
 const parametrosAvanzados = document.getElementById('parametrosAvanzados')
@@ -144,21 +162,54 @@ function fContentModal (val) {
   contentModal.innerHTML = val
   modalInfo.style.display = 'block'
 }
-
+// FUNCTION que marcará como activo el nuevo icono seleccionado del listado de iconos lugar/estancia
 function removeClassActive (val) {
-  listIcoClase.map(item => item.classList.remove('active'))
+  listIcoLugar.map(item => item.classList.remove('active'))
   val.classList.add('active')
   showNota()
 }
-
+// FUNCTION que mostrará las notas del lugar/estancia activo y en el idioma seleccionado
 function showNota () {
-  let active = document.querySelector('.ico-clase.active').id
+  let active = document.querySelector('.ico-lugar.active').id
   let nota = active.replace('ico', 'i18n_nota')
   let idioma = document.getElementById("idioma").value
   let i18n = (idioma === 'en') ? en : (idioma === 'pt') ? pt : es
   notas.innerHTML = i18n[nota]
 }
 
+/* Funciones a ejecutar al hacer click en los iconos de parámetros [Ambientales - Personas/Actividad - COVID19] */
+icoAmbientales.addEventListener('click', (event) => {
+  showParametros(icoAmbientales, CellParametrosAmbientales)
+})
+icoPersonaActividad.addEventListener('click', (event) => {
+  showParametros(icoPersonaActividad, CellParametrosPersonasActividad)
+})
+icoCovid19.addEventListener('click', (event) => {
+  showParametros(icoCovid19, CellParametrosCovid19)
+})
+function showParametros(ico, cell) {
+  listIcoParametros.map(item => item.classList.remove('active'))
+  listCellParametros.map(item => item.classList.add('hidden'))
+  ico.classList.add('active')
+  cell.classList.remove('hidden')
+}
+/* Funciones a ejecutar al hacer click en los iconos de resultados [Condicional/Evento - Absoluto/Evento - Absoluto/Multiples Veces] */
+icoCondicionalEvento.addEventListener('click', (event) => {
+  showResultados(icoCondicionalEvento, CellResultadoCondicional)
+})
+icoAbsolutoEvento.addEventListener('click', (event) => {
+  showResultados(icoAbsolutoEvento, CellResultadoAbsoluto)
+})
+icoAbsolutoMultiplesVeces.addEventListener('click', (event) => {
+  showResultados(icoAbsolutoMultiplesVeces, CellResultadoMultiveces)
+})
+function showResultados(ico, cell) {
+  listIcoResultados.map(item => item.classList.remove('active'))
+  listCellResultados.map(item => item.classList.add('hidden'))
+  ico.classList.add('active')
+  cell.classList.remove('hidden')
+}
+// FUNCTION que se lanzará al pulsar sobre el icono CLASE
 icoClase.addEventListener('click', (event) => {
   removeClassActive(icoClase)
 
@@ -370,9 +421,11 @@ function calculoTasaVentilacion() {
   let B38 = parseFloat(valorNPersonas.value)
   let E34 = E17 * (B28 + B31) * 1000 / 3600 / (B38)
   valorTasaVentilacion.innerHTML = E34.toFixed(2)
+  /*
   // Calculamos el tamaño de la fuete para mostrar la tasa (ventilación * persona)
   let font = (E34 < 10) ? 34 : (E34 >= 10 && E34 < 100) ? 30 : (E34 >= 100 && E34 < 1000) ? 26 : 22
   valorTasaVentilacion.style.fontSize = `${font}px`
+  */
   let B39 = parseFloat(valorPersonasInfecciosas.value)
   let B40 = parseFloat(valorInmune.value)
   let B41 = (B38 - B39) * (1 - B40)
@@ -402,7 +455,7 @@ function calculoTasaVentilacion() {
   let B73 = (B71 * B61) / 100
   valorProbMuerte.innerHTML = `${B73.toFixed(3)}%`
   let B74 = (B73 / 0.0000006) / 100
-  valorRelMuerteAuto.innerHTML = `${B74.toFixed(3)}`
+  valorRelMuerteAuto.innerHTML = `${B74.toFixed(0)}`
   let B77 = (B41 * B71) / 100
   valorCOVIDSurgidos.innerHTML = `${B77.toFixed(3)}`
   let B78 = (B77 * B60) / 100
@@ -412,13 +465,13 @@ function calculoTasaVentilacion() {
   let B82 = ( B49 * 3.6 / B28 / E17 * (1 - (1 / B28 / E24) * (1 - Math.exp(-B28 * E24)))) * 1000000 + B22
   let B93 = (B39 + B41) * B58
   let B96 = 1 - Math.pow((1 - (B71 / 100) * B58), B41)
-  valorAbsProbInfeccion.innerHTML = B96.toFixed(3)
+  valorAbsProbInfeccion.innerHTML = `${B96.toFixed(3)}%`
   let B97 = B96 * (B60 / 100)
-  valorAbsProbHospitalizacion.innerHTML = B97.toFixed(3)
+  valorAbsProbHospitalizacion.innerHTML = `${B97.toFixed(3)}%`
   let B98 = B96 * (B61 / 100)
-  valorAbsProbMuerte.innerHTML = B98.toFixed(4)
+  valorAbsProbMuerte.innerHTML = `${B98.toFixed(4)}%`
   let B99 = (B98 / 100) / 0.0000006
-  valorAbsRelMuerteAuto.innerHTML = B99.toFixed(3)
+  valorAbsRelMuerteAuto.innerHTML = B99.toFixed(0)
   let B102 = ((B41 - (B93/100)) * B96) / 100
   valorAbsCOVIDSurgidos.innerHTML = B102.toFixed(4)
   let B103 = B102 * B60 / 100
@@ -428,13 +481,13 @@ function calculoTasaVentilacion() {
   let B106 = ((B82-B22) * E24 / 1 * 0.01 / (B96 / 100)) + B22
   valorCO2InhalarInfectar.innerHTML = parseInt(B106)
   let B111 = (1 - Math.pow((1 - (B96 / 100)), B26)) * 100
-  valorAbsProbInfeccionMulti.innerHTML = B111.toFixed(3)
+  valorAbsProbInfeccionMulti.innerHTML = `${B111.toFixed(3)}%`
   let B112 = B111 * (B60 / 100)
-  valorAbsProbHospitalizacionMulti.innerHTML = B112.toFixed(3)
+  valorAbsProbHospitalizacionMulti.innerHTML = `${B112.toFixed(3)}%`
   let B113 = B111 * (B61 / 100)
-  valorAbsProbMuerteMulti.innerHTML = B113.toFixed(4)
+  valorAbsProbMuerteMulti.innerHTML = `${B113.toFixed(4)}%`
   let B114 = (B113 / 100) / (0.0000006 * B26)
-  valorAbsRelMuerteAutoMulti.innerHTML = B114.toFixed(3)
+  valorAbsRelMuerteAutoMulti.innerHTML = B114.toFixed(0)
   let B117 = ((B41 - (B93/100)) * B111) / 100
   valorAbsCOVIDSurgidosMulti.innerHTML = B117.toFixed(4)
   let B118 = B117 * B60 / 100

@@ -9,6 +9,10 @@ const en = {
     i18n_super: 'Supermarket',
     i18n_tasa_ventilacion_persona: 'Ventilation rate per person',
     i18n_l_s_persona: 'L/s/person',
+        i18n_parametros: 'Parameters',
+        i18n_ambientales: 'Environmental',
+        i18n_personas_actividad: 'People/Activity',
+        i18n_covid19: 'COVID-19',
     i18n_parametros_ambientales: 'Environmental Parameters',
     i18n_largo: 'Lenght',
     i18n_ancho: 'Width',
@@ -44,6 +48,10 @@ const en = {
     i18n_probabilidad_ser_infeccioso: 'Probability of being infective',
     i18n_tasa_hospitalizacion: 'Hospitalization rate',
     i18n_indice_mortalidad: 'Death rate',
+        i18n_resultados: 'Results',
+        i18n_condicional_evento: 'Conditional <br /> Event',
+        i18n_absoluto_evento: 'Absolute <br /> Event',
+        i18n_absoluto_multievento: 'Absolute <br /> Multiple times',
     i18n_resultado_condicional_evento: 'Conditional result for one event',
     i18n_una_persona_un_evento: 'ONE PERSON / ONE EVENT',
     i18n_prob_infeccion: 'Probability of infection',
@@ -67,7 +75,7 @@ const en = {
     i18n_hospitalizaciones_surgidas_multi: 'Hospitalizations arising',
     i18n_muertes_surgidas_multi: 'Deaths arising',
     i18n_resultado_absoluto_multi_evento: 'Result absolute/multiple times ',
-    i18n_notas_particulares: 'Particular notes for this case',
+    i18n_notas_particulares: 'Particular notes',
     i18n_mas_info: 'More Information',
     i18n_notaClase: `
         <strong>Frecuencia respiratoria</strong><br /><br />
@@ -87,7 +95,7 @@ const en = {
         Está basado en este articulo: <a href="https://www.sciencedirect.com/science/article/pii/S1352231013004494">https://www.sciencedirect.com/science/article/pii/S1352231013004494</a><br /><br />
         Tener en cuenta que para el riesgo de infección, la calculadora solo estima el riesgo de infección a través del aire más allá de las proximidades. Dado que la distancia social no se mantendría en tal evento, esto será una gran subestimación.
       `,
-    i18n_notaMetro: ``,
+    i18n_notaMetro: `<br /><br /><br />`,
     i18n_notaSuper: `
         Basado en un supermercado específico en Boulder, Colorado.<br /><br />
         Dimensiones horizontales estimadas de Google Maps (usando escala), altura usando imágenes de Google Street View (usando personas presentes para escala).<br /><br />
