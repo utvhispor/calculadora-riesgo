@@ -150,7 +150,7 @@ const es = {
         <strong>Proporción media de mezcla de CO2</strong> - Solución analítica del modelo de caja. La ecuación (4) de Miller et al.(2020). Consulte las FAQ para conocer las diferencias con la calculadora Quanta.<br /><br />
     `,
     i18n_infoResultadoAbsolutoEvento: `
-        <strong>Casos COVID surgidos</strong> - Debe interpretarse estadísticamente. Este sería el promedio por ejemplo. 100 repeticiones del evento en un lugar determinado.<br /><br />
+        <strong>Número de personas infecciosas presentes</strong> - Debe interpretarse estadísticamente. Este sería el promedio por ejemplo. 100 repeticiones del evento en un lugar determinado.<br /><br />
         <strong>Relación con el riesgo de muerte por viaje en automóvil</strong> - Consulte las FAQ para obtener una estimación aproximada de las muertes por viaje en automóvil en un día determinado.<br /><br />
         <strong>Casos COVID surgidos</strong> - Número de personas.<br /><br />
         <strong>Hospitalizaciones surgidas</strong> - Número de personas.<br /><br />

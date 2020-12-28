@@ -78,89 +78,89 @@ const en = {
     i18n_notas_particulares: 'Particular notes',
     i18n_mas_info: 'More Information',
     i18n_notaClase: `
-        <strong>Frecuencia respiratoria</strong><br /><br />
-        Usando la mitad de la actividad sedentaria y ligera, 16-21 años por defecto. La frequencia respiratoria solo importa para personas susceptibles. Para estudiar la transmisión de los estudiantes al maestro, es necesario aumentar este valor en consecuencia.<br />
-        Para estudiar la transmisión a niños pequeños, la frequencia respiratoria también debe ajustarse de acuerdo con la tabla Readme.<br /><br />
-        <strong>Tasa de emisión Quanta</strong><br /><br />
-        El valor actual es para una profesora hablando mucho.<br />
-        Para los adolescentes, se usan los valores del archivo Readme, según la actividad.<br />
-        Se cree que los niños pequeños son menos contagiosos y también respiran menos aire, por lo que quizás reduzca la Tasa de emisión Quanta en x5.
+        <strong>Breathing rate</strong><br /><br />
+        Using 1/2 of sedentary and light activity, 16-21 yrs old as default. BR only matters for susceptible. To study transmission from students to teacher, need to increase this value accordingly.<br />
+        To study transmission to young children, BR also needs to be adjusted according to Readme table.<br /><br />
+        <strong>Quanta emission rate</strong><br /><br />
+        Current value is for a teacher talking a lot.<br />
+        For teenagers, use values from readme, according to activity.<br />
+        Small children are thought to be less contagious, and also breathe less air, so perhaps reduce the quanta emission rate by x5.
       `,
     i18n_notaCoro: `
-        La probabilidad de muerte se establece más alta debido a la mayor edad de los miembros del coro (el 75% de los enfermos tenían >= 65 años). Sugerir cambiar al 1% para aplicaciones generales.<br /><br />
-        Probabilidad de ser infeccioso calculada a partir de la prevalencia de la enfermedad en el condado en ese momento (7 casos * 2 para dar cuenta de los casos no detectados / 129000 habitantes del condado), ver Miller et al. 2020.<br /><br />
+        Probability of death is set higher because of the higher age of choir members (75% of those ill were >= 65 yr old). Suggest changing to 1% for general applications.<br /><br />
+        Probability of being infective calculated from prevalence of the disease in the county at the time (7 cases * 2 to account for undetected cases / 129000 population of county), see Miller et al. 2020.<br /><br />
       `,
     i18n_notaEstadio: `
-        Este es un caso para un estadio de fútbol, como se explica en este tweet: <a href="https://twitter.com/jljcolorado/status/1289254898131820550">https://twitter.com/jljcolorado/status/1289254898131820550</a><br /><br />
-        Está basado en este articulo: <a href="https://www.sciencedirect.com/science/article/pii/S1352231013004494">https://www.sciencedirect.com/science/article/pii/S1352231013004494</a><br /><br />
-        Tener en cuenta que para el riesgo de infección, la calculadora solo estima el riesgo de infección a través del aire más allá de las proximidades. Dado que la distancia social no se mantendría en tal evento, esto será una gran subestimación.
+        This is a case for a soccer stadium, as discussed in this tweet: <a href="https://twitter.com/jljcolorado/status/1289254898131820550">https://twitter.com/jljcolorado/status/1289254898131820550</a><br /><br />
+        And based on this paper: <a href="https://www.sciencedirect.com/science/article/pii/S1352231013004494">https://www.sciencedirect.com/science/article/pii/S1352231013004494</a><br /><br />
+        Note that for the infection risk, the calculator only estimates the infection risk through the air beyond close proximity. Since social distance would not be maintained in such an event, this will be a large underestimate.
       `,
     i18n_notaMetro: `<br /><br /><br />`,
     i18n_notaSuper: `
-        Basado en un supermercado específico en Boulder, Colorado.<br /><br />
-        Dimensiones horizontales estimadas de Google Maps (usando escala), altura usando imágenes de Google Street View (usando personas presentes para escala).<br /><br />
-        Tasa de ventilación estimada a partir del estándar ASHRAE en la página Readme.<br /><br />
-        Promedio diario típico de ocupación, basado en mis visitas al espacio antes de la pandemia (puede ser menor ahora).<br /><br />
-        Otros parámetros estimados en el Readme para esta situación.<br /><br />
-        Esto es para un trabajador de un supermercado. Para un cliente, se cambia el tiempo dedicado a la historia a, por ejemplo, 1 hora, 4 veces a la semana para simular 1 mes.
+        Based on a specific supermarket in Boulder, Colorado.<br /><br />
+        Horizontal dimensions estimated from Google Maps (using scale), height using pictures from Google Street View (using people present for scale).<br /><br />
+        Ventilation rate estimated from ASHRAE standard in Readme page.<br /><br />
+        Occupancy typical daily average, based on my visits to the space pre-pandemic (may be lower now).<br /><br />
+        Other parameters estimated per Readme for this situation.<br /><br />
+        This is for a supermarket worker. For a customer, change the time spent in the story to e.g. 1 hr, 4 times a week to simulate 1 month.
       `,
     i18n_infoAmbientales: `
-        <strong>Largo</strong> - Puede ingresar como "pies" o como "m" (una vez ingresado como "m", cambiar en "pies" no funciona).<br /><br />
-        <strong>Ancho</strong> - Puede ingresar como "pies" o como "m" (una vez ingresado como "m", cambiar en "pies" no funciona).<br /><br />
-        <strong>Alto</strong> - Puede ingresar como "pies" o como "m" (una vez ingresado como "m", cambiar en "pies" no funciona).<br /><br />
-        <strong>Duracion evento</strong> - Valor para su situación de interés.<br /><br />
-        <strong>Nº rep. evento</strong> - Por ejemplo múltiples reuniones de clase, múltiples desplazamientos en transporte público, etc.<br /><br />
-        <strong>Cambios de aire</strong> - Valor en h-1: Readme: Igual que "cambios de aire por hora". Valor en L/s/per para comparar con las pautas (por ejemplo, ASHRAE 62.1).<br /><br />
-        <strong>Presión</strong> - Utilizado solo para el cálculo de CO2.<br /><br />
-        <strong>Temperatura</strong> - Use el <a href="https://www.google.com/search?q=fahrenheit+to+c+converter" target="blank">convertidor web</a> si es necesario para convertir Fahrenheit -> Celsius. Se usa para el cálculo de CO2, eventualmente para la tasa de supervivencia del virus.<br /><br />
-        <strong>Humedad</strong> - Aún no se usa, pero eventualmente se puede usar para la tasa de supervivencia del virus.<br /><br />
-        <strong>CO2 al aire libre</strong> - Ver Readme<br /><br />
-        <strong>Tasa descomposicón</strong> - Ver Readme: puede estimar para una determinada T, RH, UV a partir del estimador DHS.<br /><br />
-        <strong>Deposicón superficies</strong> - Buonnano y col. (2020), Miller et al. (2020). Puede variar de 0,24 a 1,5 h-1, según el rango de tamaño de partícula.<br /><br />
-        <strong>Medidas control adicionales</strong> - Por ejemplo filtrado de recirculacion de aire, filtro de aire HEPA, desinfección UV, etc. Consulte las preguntas frecuentes, el archivo Readme de calculo para filtro HEPA portátil.<br /><br />
-        <strong>Tasa de pérdida total de primer orden</strong> - Suma de todas las tarifas de primer orden.<br /><br />
-        <strong>Tasa de ventilación por persona</strong> - Este es el valor de la ventilación que realmente importa para la transmisión de enfermedades. Incluye medidas de control adicionales.<br /><br />
+        <strong>Length</strong> - Can enter as ft or as m (once entered as m, changing in ft does not work).<br /><br />
+        <strong>Width</strong> - Can enter as ft or as m (once entered as m, changing in ft does not work).<br /><br />
+        <strong>Height</strong> - Can enter as ft or as m (once entered as m, changing in ft does not work).<br /><br />
+        <strong>Duration of event</strong> - Value for your situation of interest.<br /><br />
+        <strong>Number of repetitions of event</strong> - For e.g. multiple class meetings, multiple commutes in public transportation etc.<br /><br />
+        <strong>Ventilation w/ outside air</strong> - Value in h-1: Readme: Same as "air changes per hour". Value in L/s/per to compare to guidelines (e.g. ASHRAE 62.1).<br /><br />
+        <strong>Pressure</strong> - Used only for CO2 calculation.<br /><br />
+        <strong>Temperature</strong> - Use <a href="https://www.google.com/search?q=fahrenheit+to+c+converter" target="blank">convertidor web</a> if needed for F --> C. Used for CO2 calculation, eventually for survival rate of virus.<br /><br />
+        <strong>Relative Humidity</strong> - Not yet used, but may eventually be used for survival rate of virus.<br /><br />
+        <strong>Background CO2 Outdoors</strong> - See Readme<br /><br />
+        <strong>Decay rate of the virus</strong> - See Readme: can estimate for a given T, RH, UV from DHS estimator.<br /><br />
+        <strong>Deposition to surfaces</strong> - Buonnano et al. (2020), Miller et al. (2020). Could vary 0.24-1.5 h-1, depending on particle size range.<br /><br />
+        <strong>Additional control measures</strong> - E.g. filtering of recirc. air, HEPA air cleaner, UV disinfection, etc. See FAQs, Readme for calc for portable HEPA filter.<br /><br />
+        <strong>Total first order loss rate</strong> - Sum of all the first-order rates.<br /><br />
+        <strong>Ventilation rate per person</strong> - This is the value of ventilation that really matters for disease transmission. Includes additional control measures.<br /><br />
     `,
     i18n_infoPersonas: `
-        <strong>Nº Personas</strong> - Valor para su situación de interés.<br /><br />
-        <strong>Población inmune</strong> - De los informes de seroprevalencia, dependerá de cada ubicación y hora, consulte el archivo Readme.<br /><br />
-        <strong>Personas susceptibles</strong> - Valor para su situación de interés.<br /><br />
-        <strong>Frec. respiratoria</strong> - Ver Readme. Varía mucho según el nivel de actividad.<br /><br />
-        <strong>Exhalación cuántica</strong> - Ver Reame. Depende mucho de la actividad, también como persona. Este es el parámetro más incierto, pruebar con diferentes valores.<br /><br />
-        <strong>Ef. mascarilla exhalación</strong> - 0 si la persona infectada no lleva máscara. Ver Readme.<br /><br />
-        <strong>Personas con mascarillas</strong> - Valor para su situación. Se aplica a todo el mundo tanto para la emisión como para la inhalación. Modificar fórmulas manualmente si es necesario.<br /><br />
-        <strong>Ef. mascarilla inhalación</strong> - Ver Readme.<br /><br />
-        <strong>Pers. infecciosas</strong> - Mantenga esto en uno a menos que realmente desee para estudiar casos diferentes; vea los resultados condicionales y absolutos.<br /><br />
-        <strong>Tasa CO2 por persona</strong> - Ver Readme. Esto no afecta el cálculo de la infección, solo el uso de CO2 como indicador, se podría ignorar.<br /><br />
-        <strong>Tasa CO2 para todas las personas</strong> - El anterior multiplicado por el número de personas y aplicando la ley de los gases ideales para convertir a P&T ambiental.<br /><br />
+        <strong>Total N people present</strong> - Value for your situation of interest.<br /><br />
+        <strong>Fraction of population inmune</strong> - From seroprevalence reports, will depend on each location and time, see Readme.<br /><br />
+        <strong>Susceptible people</strong> - Value for your situation of interest.<br /><br />
+        <strong>Breathing rate (susceptibles)</strong> - See Readme - varies a lot with activity level.<br /><br />
+        <strong>Quanta exhalation rate (infected)</strong> - See Readme. Depends strongly on activity, also like person.This is the most uncertain parameter, try different values.<br /><br />
+        <strong>Exhalation mask efficiency</strong> - 0 if infective person is not wearing a mask. See Readme.<br /><br />
+        <strong>Fraction of people w/ masks</strong> - Value for your situation. It is applied to everybody for both emission & inhalation. Modify formulas manually if needed.<br /><br />
+        <strong>Inhalation mask efficiency</strong> - See Readme.<br /><br />
+        <strong>Infective people</strong> - Keep this at one unless you really want to study a different cases - see conditional and absolute results.<br /><br />
+        <strong>CO2 emission rate (1 person)</strong> - See Readme. This does not affect infection calculation, only use of CO2 as indicator, could ignore.<br /><br />
+        <strong>CO2 emission rate (all persons)</strong> - Previous, multiplied by number of people, and applying ideal gas law to convert to ambient P & T.<br /><br />
     `,
     i18n_infoCovid: `
-        <strong>Probabilidad de ser infeccioso</strong> - Parámetro muy importante, específico para cada región y período de tiempo. Para resultados ABSOLUTOS (probablemente dada la prevalencia de la enfermedad en la población). Ver Readme.<br /><br />
-        <strong>Tasa de hospitalización</strong> - De informes de noticias. Varía mucho con la edad y los factores de riesgo.<br /><br />
-        <strong>Índice de mortalidad</strong> - De informes de noticias. Varía mucho con la edad y los factores de riesgo (1% típico - más alto para personas mayores / en riesgo).<br /><br />
+        <strong>Probability of being infective</strong> - Very important parameter, specific for each region and time period. For ABSOLUTE results (prob. given prevalence of disease in the population). See Readme.<br /><br />
+        <strong>Hospitalization rate</strong> - From news reports. Varies strongly with age and risk factors.<br /><br />
+        <strong>Death rate</strong> - From news reports. Varies strongly with age and risk factors (1% typical - Higher for older / at risk people).<br /><br />
     `,
     i18n_infoResultadoCondicional: `
-        <strong>Tasa de emisión neta</strong> - Incluye el número de personas infectadas presentes.<br /><br />
-        <strong>Concentración media Quanta</strong> - Solución analítica del modelo de caja. La ecuación (4) de Miller et al.(2020)<br /><br />
-        <strong>Prob. infección</strong> - Aplicando el modelo de infección de Wells-Riley a la cantidad de dosis infecciosas inhaladas. La ecuación (1) de Miller et al.(2020)<br /><br />
-        <strong>Relación con el riesgo de muerte por viaje en automóvil</strong> - Consulte las FAQ para obtener una estimación aproximada de las muertes por viaje en automóvil en un día determinado.<br /><br />
-        <strong>Casos COVID surgidos</strong> - Número de personas. Multiplica la probabilidad de una persona por el número de personas susceptibles presentes.<br /><br />
-        <strong>Hospitalizaciones surgidas</strong> - Número de personas.<br /><br />
-        <strong>Muertes surgidas</strong> - Número de personas.<br /><br />
-        <strong>Proporción media de mezcla de CO2</strong> - Solución analítica del modelo de caja. La ecuación (4) de Miller et al.(2020). Consulte las FAQ para conocer las diferencias con la calculadora Quanta.<br /><br />
+        <strong>Net emission rate</strong> - Includes the number of infective people present.<br /><br />
+        <strong>Avg Quanta Concentration</strong> - Analytical solution of the box model. Equation (4) in Miller et al. (2020)<br /><br />
+        <strong>Probability of infection (1 person)</strong> - Applying Wells-Riley infection model to the amount of infectious doses inhaled. Equation (1) in Miller et al. (2020)<br /><br />
+        <strong>Ratio to risk of car travel death</strong> - See FAQs for rough estimate of death traveling by car on a given day.<br /><br />
+        <strong>Number of COVID cases arising</strong> - Number of people. Multiplies probability of one person, times the number of susceptible people present.<br /><br />
+        <strong>N of hospitalizations arising</strong> - Number of people.<br /><br />
+        <strong>N of deaths arising</strong> - Number of people.<br /><br />
+        <strong>Avg CO2 mixing ratio</strong> - Analytical solution of the box model. Equation (4) in Miller et al. (2020). See FAQ page for differences w/ quanta calc.<br /><br />
     `,
     i18n_infoResultadoAbsolutoEvento: `
-        <strong>Casos COVID surgidos</strong> - Debe interpretarse estadísticamente. Este sería el promedio por ejemplo. 100 repeticiones del evento en un lugar determinado.<br /><br />
-        <strong>Relación con el riesgo de muerte por viaje en automóvil</strong> - Consulte las FAQ para obtener una estimación aproximada de las muertes por viaje en automóvil en un día determinado.<br /><br />
-        <strong>Casos COVID surgidos</strong> - Número de personas.<br /><br />
-        <strong>Hospitalizaciones surgidas</strong> - Número de personas.<br /><br />
-        <strong>Muertes surgidas</strong> - Número de personas.<br /><br />
-        <strong>Proporción media de mezcla de CO2</strong> - Solución analítica del modelo de caja. La ecuación (4) de Miller et al.(2020). Consulte las FAQ para conocer las diferencias con la calculadora Quanta.<br /><br />
+        <strong>N of infective people present</strong> - It has to be interpreted statistically. This would be the average over e.g. 100 repetitions of the event in a given location.<br /><br />
+        <strong>Ratio to risk of car travel death</strong> - See FAQs for rough estimate of death traveling by car on a given day.<br /><br />
+        <strong>Number of COVID cases arising</strong> - Number of people.<br /><br />
+        <strong>N of hospitalizations arising</strong> - Number of people.<br /><br />
+        <strong>N of deaths arising</strong> - Number of people.<br /><br />
+        <strong>Avg CO2 mixing ratio</strong> - Analytical solution of the box model. Equation (4) in Miller et al. (2020). See FAQ page for differences w/ quanta calc.<br /><br />
     `,
     i18n_infoResultadoAbsolutoEventoMultiples: `
-        <strong>Relación con el riesgo de muerte por viaje en automóvil</strong> - Consulte las FAQ para obtener una estimación aproximada de las muertes por viaje en automóvil en un día determinado.<br /><br />
-        <strong>Casos COVID surgidos</strong> - Número de personas.<br /><br />
-        <strong>Hospitalizaciones surgidas</strong> - Número de personas.<br /><br />
-        <strong>Muertes surgidas</strong> - Número de personas.<br /><br />
+        <strong>Ratio to risk of car travel death</strong> - See FAQs for rough estimate of death traveling by car on a given day.<br /><br />
+        <strong>Number of COVID cases arising</strong> - Number of people.<br /><br />
+        <strong>N of hospitalizations arising</strong> - Number of people.<br /><br />
+        <strong>N of deaths arising</strong> - Number of people.<br /><br />
     `
 }

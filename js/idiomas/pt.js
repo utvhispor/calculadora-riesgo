@@ -150,7 +150,7 @@ const pt = {
         <strong>Proporção média de mistura de CO2</strong> - Solução analítica do modelo de caixa. A equação (4) de Miller et al.(2020). Consulte as FAQ para conhecer as diferenças com a calculadora quântica.<br /><br />
     `,
     i18n_infoResultadoAbsolutoEvento: `
-        <strong>Novos casos COVID</strong> - Deve interpretar-se estatisticamente. Este seria a média por exemplo. 100 repetições do evento num lugar determinado.<br /><br />
+        <strong>Número de pessoas infecciosas presentes</strong> - Deve interpretar-se estatisticamente. Este seria a média por exemplo. 100 repetições do evento num lugar determinado.<br /><br />
         <strong>Relação com o risco de morte em viagem de automóvel</strong> - Consulte as FAQ para obter uma estimação aproximada das mortes em viagem de automóvel num dia determinado.<br /><br />
         <strong>Novos casos COVID</strong> - Número de pessoas.<br /><br />
         <strong>Novas hospitalizaciones</strong> - Número de pessoas.<br /><br />
